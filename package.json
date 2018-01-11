@@ -1,7 +1,7 @@
 {
   "name": "vscode-status-bar-format-switcher",
   "version": "1.0.0",
-  "description": "A VS Code extensions that allows you to toggle the formatter on and off with a simple click",
+  "description": "A VS Code extension that allows you to toggle the formatter on and off with a simple click",
   "license": "MIT",
   "repository": {
     "type": "git",
