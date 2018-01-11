@@ -1,14 +1,47 @@
-import * as vscode from 'vscode'
+import {
+  commands,
+  workspace,
+  window,
+  ExtensionContext,
+  ConfigurationTarget
+} from 'vscode'
+import { get } from 'lodash'
+import getInitialFormattingConfiguration from
+  './helpers/getInitialFormattingConfiguration'
 
-export function activate (context: vscode.ExtensionContext) {
-  const disposable = vscode.commands.registerCommand(
-    'extension.toggleFormat',
-    () => {
-      vscode.window.showInformationMessage('Hello World!')
-    }
+const CONFIGURATION_TARGET = ConfigurationTarget.Global
+
+export function activate(extensionContext: ExtensionContext) {
+  let toggle = false
+
+  const editorConfiguration = workspace.getConfiguration(
+    'editor',
+    get(window, 'activeTextEditor.document.uri')
+  )
+  const initialFormattingConfiguration =
+    getInitialFormattingConfiguration(editorConfiguration)
+
+  extensionContext.globalState.update(
+    'initialFormattingConfiguration',
+    initialFormattingConfiguration
   )
 
-  context.subscriptions.push(disposable)
+  const disposable = commands.registerCommand('extension.toggleFormat', () => {
+    ;['formatOnPaste', 'formatOnSave', 'formatOnType'].forEach(
+      key => {
+        if (!toggle) {
+          return editorConfiguration.update(key, false, CONFIGURATION_TARGET)
+        }
+
+        const initialValue = initialFormattingConfiguration[key]
+        editorConfiguration.update(key, initialValue, CONFIGURATION_TARGET)
+      }
+    )
+
+    toggle = !toggle
+  })
+
+  extensionContext.subscriptions.push(disposable)
 }
 
-export function deactivate () {}
+export function deactivate() {}

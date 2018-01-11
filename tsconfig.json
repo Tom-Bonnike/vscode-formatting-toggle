@@ -13,7 +13,6 @@
   },
   "exclude": [
     ".vscode",
-    "node_modules",
-    "test"
+    "node_modules"
   ]
 }

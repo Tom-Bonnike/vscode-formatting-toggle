@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/Tom-Bonnike/vscode-status-bar-format-toggle#readme",
   "engines": {
-    "vscode": "^1.5.0"
+    "vscode": "^1.19.0"
   },
   "activationEvents": [
     "onCommand:extension.toggleFormat"
@@ -34,7 +34,11 @@
     "vscode:prepublish": "tsc -p ./"
   },
   "devDependencies": {
-    "typescript": "^2.6.2",
+    "@types/lodash": "^4.14.92",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
     "vscode": "^1.1.10"
   }
 }
