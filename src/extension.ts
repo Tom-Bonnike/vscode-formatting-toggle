@@ -21,11 +21,6 @@ export function activate(extensionContext: ExtensionContext) {
   const initialFormattingConfiguration =
     getInitialFormattingConfiguration(editorConfiguration)
 
-  extensionContext.globalState.update(
-    'initialFormattingConfiguration',
-    initialFormattingConfiguration
-  )
-
   const disposable = commands.registerCommand('extension.toggleFormat', () => {
     ;['formatOnPaste', 'formatOnSave', 'formatOnType'].forEach(
       key => {
