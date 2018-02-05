@@ -12,7 +12,7 @@
     "rootDir": "."
   },
   "exclude": [
-    "node_modules",
-    "test"
+    ".vscode",
+    "node_modules"
   ]
 }

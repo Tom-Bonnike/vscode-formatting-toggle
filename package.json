@@ -7,16 +7,38 @@
     "type": "git",
     "url": "git+https://github.com/Tom-Bonnike/vscode-status-bar-format-toggle.git"
   },
+  "publisher": "tombonnike",
   "author": "Tom Bonnike (bonniketom@gmail.com)",
   "bugs": {
     "url": "https://github.com/Tom-Bonnike/vscode-status-bar-format-toggle/issues"
   },
   "homepage": "https://github.com/Tom-Bonnike/vscode-status-bar-format-toggle#readme",
-  "devDependencies": {
-    "typescript": "^2.6.2",
-    "vscode": "^1.1.10"
+  "engines": {
+    "vscode": "^1.19.0"
   },
   "activationEvents": [
     "onCommand:extension.toggleFormat"
-  ]
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.toggleFormat",
+        "title": "Toggle formatting"
+      }
+    ]
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "compile": "tsc -watch -p ./",
+    "vscode:prepublish": "tsc -p ./"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.92",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "vscode": "^1.1.10"
+  }
 }
