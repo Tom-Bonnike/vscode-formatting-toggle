@@ -1,10 +1,7 @@
 import {
-  commands,
   workspace,
   window,
-  ExtensionContext,
-  ConfigurationTarget,
-  StatusBarAlignment
+  ExtensionContext
 } from 'vscode'
 import { get } from 'lodash'
 import initCommand from './helpers/initCommand'
