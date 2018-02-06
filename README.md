@@ -1,4 +1,4 @@
-# Status bar format switcher
+# Status bar formatting toggle
 
 A VS Code extension that allows you to toggle the formatter on and off with a simple click.
 

@@ -13,10 +13,25 @@
   "bugs": {
     "url": "https://github.com/Tom-Bonnike/vscode-status-bar-format-toggle/issues"
   },
-  "homepage": "https://github.com/Tom-Bonnike/vscode-status-bar-format-toggle#readme",
+  "homepage": "https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle",
   "engines": {
     "vscode": "^1.19.0"
   },
+  "keywords": [
+    "vscode",
+    "disable",
+    "toggle",
+    "format",
+    "formatter",
+    "formatting",
+    "prettier",
+    "status bar",
+    "statusbar"
+  ],
+  "categories": [
+    "Other",
+    "Formatters"
+  ],
   "activationEvents": ["*"],
   "main": "./out/src/extension",
   "contributes": {
