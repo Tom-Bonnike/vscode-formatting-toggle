@@ -7,6 +7,7 @@ const initStatusBar = (): StatusBarItem => {
   statusBar.command = `extension.${COMMAND_NAME}`
   statusBar.tooltip = 'Enable/Disable formatting'
   statusBar.text = 'Disable formatting'
+  statusBar.show()
 
   return statusBar
 }
