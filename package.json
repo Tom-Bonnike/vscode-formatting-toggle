@@ -17,9 +17,7 @@
   "engines": {
     "vscode": "^1.19.0"
   },
-  "activationEvents": [
-    "onCommand:extension.toggleFormat"
-  ],
+  "activationEvents": ["*"],
   "main": "./out/src/extension",
   "contributes": {
     "commands": [

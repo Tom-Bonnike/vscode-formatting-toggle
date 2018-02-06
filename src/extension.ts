@@ -3,40 +3,23 @@ import {
   workspace,
   window,
   ExtensionContext,
-  ConfigurationTarget
+  ConfigurationTarget,
+  StatusBarAlignment
 } from 'vscode'
 import { get } from 'lodash'
-import getInitialFormattingConfiguration from
-  './helpers/getInitialFormattingConfiguration'
-
-const CONFIGURATION_TARGET = ConfigurationTarget.Global
+import initCommand from './helpers/initCommand'
+import initStatusBar from './helpers/initStatusBar'
 
 export function activate(extensionContext: ExtensionContext) {
-  let toggle = false
-
   const editorConfiguration = workspace.getConfiguration(
     'editor',
     get(window, 'activeTextEditor.document.uri')
   )
-  const initialFormattingConfiguration =
-    getInitialFormattingConfiguration(editorConfiguration)
+  const statusBar = initStatusBar()
+  const command = initCommand(editorConfiguration, statusBar)
 
-  const disposable = commands.registerCommand('extension.toggleFormat', () => {
-    ;['formatOnPaste', 'formatOnSave', 'formatOnType'].forEach(
-      key => {
-        if (!toggle) {
-          return editorConfiguration.update(key, false, CONFIGURATION_TARGET)
-        }
-
-        const initialValue = initialFormattingConfiguration[key]
-        editorConfiguration.update(key, initialValue, CONFIGURATION_TARGET)
-      }
-    )
-
-    toggle = !toggle
-  })
-
-  extensionContext.subscriptions.push(disposable)
+  extensionContext.subscriptions.push(statusBar)
+  extensionContext.subscriptions.push(command)
 }
 
 export function deactivate() {}
