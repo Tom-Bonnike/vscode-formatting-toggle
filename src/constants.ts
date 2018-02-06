@@ -4,3 +4,5 @@ export const FORMATTING_SETTINGS = [
   'formatOnSave',
   'formatOnType'
 ]
+export const ENABLE_TEXT = '$(x) Formatting disabled'
+export const DISABLE_TEXT = '$(check) Formatting enabled'
