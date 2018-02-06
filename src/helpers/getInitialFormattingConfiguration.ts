@@ -1,23 +1,22 @@
 import { WorkspaceConfiguration } from 'vscode'
+import { FORMATTING_SETTINGS } from '../constants'
 
-type FormattingConfiguration = {
+export type FormattingConfiguration = {
   [formatOnPaste : string]: boolean
   formatOnSave: boolean
   formatOnType: boolean
 }
 
 const DEFAULT_FORMATTING_VALUE = false
-
 const getInitialFormattingConfiguration =
-  (editorConfiguration: WorkspaceConfiguration) : FormattingConfiguration => {
-    const initialFormattingConfiguration: FormattingConfiguration = {
-      formatOnPaste:
-        editorConfiguration.get('formatOnPaste', DEFAULT_FORMATTING_VALUE),
-      formatOnSave:
-        editorConfiguration.get('formatOnSave', DEFAULT_FORMATTING_VALUE),
-      formatOnType:
-        editorConfiguration.get('formatOnType', DEFAULT_FORMATTING_VALUE)
-    }
+  (editorConfiguration: WorkspaceConfiguration): FormattingConfiguration => {
+    const initialFormattingConfiguration: FormattingConfiguration =
+      FORMATTING_SETTINGS.reduce((configuration, setting) => {
+        configuration[setting] =
+          editorConfiguration.get(setting, DEFAULT_FORMATTING_VALUE)
+
+        return configuration
+      }, {} as FormattingConfiguration)
 
     return initialFormattingConfiguration
   }
