@@ -21,7 +21,8 @@ const initCommand = (
   initialFormattingConfiguration: FormattingConfiguration,
   statusBar: StatusBarItem
 ): Disposable => {
-  // We should disable if any of the initial formatting setting is set to `true`.
+  // We should disable on the first toggle if any of the initial formatting
+  // setting is set to `true`.
   let shouldDisable = Object.values(initialFormattingConfiguration).some(
     Boolean
   )
@@ -33,9 +34,17 @@ const initCommand = (
         return editorConfiguration.update(setting, false, CONFIGURATION_TARGET)
       }
 
-      // Set the formatting setting back to its initial value.
-      const initialValue = initialFormattingConfiguration[setting]
-      editorConfiguration.update(setting, initialValue, CONFIGURATION_TARGET)
+      // `formatOnType` should only be toggled on if the user had enabled it
+      // beforehand.
+      // @FIXME: if `formatOnType` is set to `false` when VSCode is first
+      // launched, it will never be toggled on.
+      if (setting === 'formatOnType') {
+        const initialValue = initialFormattingConfiguration[setting]
+        return editorConfiguration.update(setting, initialValue, CONFIGURATION_TARGET)
+      }
+
+      // The two other settings are *probably* safe to be toggled on.
+      return editorConfiguration.update(setting, true, CONFIGURATION_TARGET)
     })
 
     shouldDisable = !shouldDisable
