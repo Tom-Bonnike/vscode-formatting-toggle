@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tom-Bonnike/vscode-status-bar-format-toggle.git"
+    "url": "https://github.com/Tom-Bonnike/vscode-status-bar-format-toggle.git"
   },
   "publisher": "tombonnike",
   "author": "Tom Bonnike (bonniketom@gmail.com)",
