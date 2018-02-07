@@ -1,6 +1,5 @@
 import {
   commands,
-  ConfigurationTarget,
   WorkspaceConfiguration,
   Disposable,
   StatusBarItem
@@ -8,14 +7,15 @@ import {
 import {
   COMMAND_NAME,
   FORMATTING_SETTINGS,
+  CONFIGURATION_TARGET,
   ENABLED_TEXT,
   DISABLED_TEXT
 } from '../constants'
 import { FormattingConfiguration } from './getInitialFormattingConfiguration'
 
-const CONFIGURATION_TARGET = ConfigurationTarget.Global
 const getStatusBarText = (shouldDisable : boolean) : string =>
   shouldDisable ? ENABLED_TEXT : DISABLED_TEXT
+
 const initCommand = (
   editorConfiguration: WorkspaceConfiguration,
   initialFormattingConfiguration: FormattingConfiguration,
