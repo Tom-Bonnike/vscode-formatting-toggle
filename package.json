@@ -44,7 +44,7 @@
   },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install",
-    "compile": "tsc -watch -p ./",
+    "start": "tsc -watch -p ./",
     "vscode:prepublish": "tsc -p ./"
   },
   "devDependencies": {

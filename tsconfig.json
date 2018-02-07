@@ -4,7 +4,7 @@
     "moduleResolution": "node",
     "target": "es5",
     "outDir": "out",
-    "lib": ["es6"],
+    "lib": ["es2017"],
     "sourceMap": true,
     "strict": true,
     "rootDir": "."
