@@ -14,16 +14,18 @@ import {
 import { FormattingConfiguration } from './getInitialFormattingConfiguration'
 
 const CONFIGURATION_TARGET = ConfigurationTarget.Global
+const getStatusBarText = (shouldDisable : boolean) : string =>
+  shouldDisable ? ENABLED_TEXT : DISABLED_TEXT
 const initCommand = (
   editorConfiguration: WorkspaceConfiguration,
   initialFormattingConfiguration: FormattingConfiguration,
   statusBar: StatusBarItem
 ): Disposable => {
-  // We should disable if any of the initial formatting configuration is `true`,
-  // enable otherwise.
+  // We should disable if any of the initial formatting setting is set to `true`.
   let shouldDisable = Object.values(initialFormattingConfiguration).some(
     Boolean
   )
+  statusBar.text = getStatusBarText(shouldDisable)
 
   return commands.registerCommand(`extension.${COMMAND_NAME}`, () => {
     FORMATTING_SETTINGS.forEach(setting => {
@@ -43,15 +45,16 @@ const initCommand = (
         return
       }
 
-      // Set the formatting back to the initial configuration, only if it had
-      // an initial value. All formatting settings default to `false`.
+      // Set the formatting setting back to `true`, only if it had an initial
+      // value.
+      // Note: all formatting settings default to `false` if not specified.
       if (hasInitialValue) {
         editorConfiguration.update(setting, true, CONFIGURATION_TARGET)
       }
     })
 
-    statusBar.text = shouldDisable ? DISABLED_TEXT : ENABLED_TEXT
     shouldDisable = !shouldDisable
+    statusBar.text = getStatusBarText(shouldDisable)
   })
 }
 
