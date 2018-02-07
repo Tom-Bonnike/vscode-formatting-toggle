@@ -13,7 +13,7 @@ import {
 } from '../constants'
 import { FormattingConfiguration } from './getInitialFormattingConfiguration'
 
-const getStatusBarText = (shouldDisable : boolean) : string =>
+const getStatusBarText = (shouldDisable: boolean): string =>
   shouldDisable ? ENABLED_TEXT : DISABLED_TEXT
 
 const initCommand = (
@@ -29,28 +29,13 @@ const initCommand = (
 
   return commands.registerCommand(`extension.${COMMAND_NAME}`, () => {
     FORMATTING_SETTINGS.forEach(setting => {
-      const hasInitialValue =
-        typeof initialFormattingConfiguration[setting] !== 'undefined'
-
       if (shouldDisable) {
-        editorConfiguration.update(
-          setting,
-          // Only set to `false` if it had an initial value, to not mess up the
-          // user’s config. Setting to `undefined` would remove the setting from
-          // the config.
-          hasInitialValue ? false : undefined,
-          CONFIGURATION_TARGET
-        )
-
-        return
+        return editorConfiguration.update(setting, false, CONFIGURATION_TARGET)
       }
 
-      // Set the formatting setting back to `true`, only if it had an initial
-      // value.
-      // Note: all formatting settings default to `false` if not specified.
-      if (hasInitialValue) {
-        editorConfiguration.update(setting, true, CONFIGURATION_TARGET)
-      }
+      // Set the formatting setting back to its initial value.
+      const initialValue = initialFormattingConfiguration[setting]
+      editorConfiguration.update(setting, initialValue, CONFIGURATION_TARGET)
     })
 
     shouldDisable = !shouldDisable
