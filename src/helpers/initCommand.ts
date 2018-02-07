@@ -19,7 +19,11 @@ const initCommand = (
   initialFormattingConfiguration: FormattingConfiguration,
   statusBar: StatusBarItem
 ): Disposable => {
-  let shouldDisable = true
+  // We should disable if any of the initial formatting configuration is `true`,
+  // enable otherwise.
+  let shouldDisable = Object.values(initialFormattingConfiguration).some(
+    Boolean
+  )
 
   return commands.registerCommand(`extension.${COMMAND_NAME}`, () => {
     FORMATTING_SETTINGS.forEach(setting => {
