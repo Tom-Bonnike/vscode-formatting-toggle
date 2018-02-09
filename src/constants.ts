@@ -7,5 +7,7 @@ export const FORMATTING_SETTINGS = [
   'formatOnType'
 ]
 export const CONFIGURATION_TARGET = ConfigurationTarget.Global
+export const PRETTIER_STATUS_BAR_PRIORITY = -1
+export const TOOLTIP_TEXT = 'Enable/Disable formatting'
 export const ENABLED_TEXT = 'Formatting: $(check)'
 export const DISABLED_TEXT = 'Formatting: $(x)'
