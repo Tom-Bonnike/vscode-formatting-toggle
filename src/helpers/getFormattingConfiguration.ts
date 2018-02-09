@@ -7,10 +7,10 @@ export type FormattingConfiguration = {
   formatOnType: boolean
 }
 
-const getInitialFormattingConfiguration = (
+const getFormattingConfiguration = (
   editorConfiguration: WorkspaceConfiguration
 ): FormattingConfiguration => {
-  const initialFormattingConfiguration: FormattingConfiguration = FORMATTING_SETTINGS.reduce(
+  const formattingConfiguration: FormattingConfiguration = FORMATTING_SETTINGS.reduce(
     (configuration, setting) => {
       configuration[setting] = editorConfiguration.get(setting, false)
 
@@ -19,7 +19,7 @@ const getInitialFormattingConfiguration = (
     {} as FormattingConfiguration
   )
 
-  return initialFormattingConfiguration
+  return formattingConfiguration
 }
 
-export default getInitialFormattingConfiguration
+export default getFormattingConfiguration
