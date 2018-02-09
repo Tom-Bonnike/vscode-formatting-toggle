@@ -7,5 +7,5 @@ export const FORMATTING_SETTINGS = [
   'formatOnType'
 ]
 export const CONFIGURATION_TARGET = ConfigurationTarget.Global
-export const ENABLED_TEXT = '$(check) Formatting'
-export const DISABLED_TEXT = '$(x) Formatting'
+export const ENABLED_TEXT = 'Formatting: $(check)'
+export const DISABLED_TEXT = 'Formatting: $(x)'
