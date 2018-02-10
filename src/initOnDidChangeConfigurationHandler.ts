@@ -9,19 +9,13 @@ const initOnDidChangeConfigurationHandler = (
   statusBar: StatusBarItem
 ): Disposable =>
   workspace.onDidChangeConfiguration(event => {
-    const shouldIgnoreConfigurationChange: boolean = extensionContext.globalState.get(
-      'SHOULD_IGNORE_CONFIGURATION_CHANGES',
-      false
-    )
-
-    // If the changes were triggered programmatically by the extension, ignore
-    // the event to not unnecessarily toggle the status bar text.
-    if (shouldIgnoreConfigurationChange) {
-      // Start listening to changes again.
-      return extensionContext.globalState.update(
+    if (
+      extensionContext.globalState.get(
         'SHOULD_IGNORE_CONFIGURATION_CHANGES',
         false
       )
+    ) {
+      return
     }
 
     if (event.affectsConfiguration('editor')) {

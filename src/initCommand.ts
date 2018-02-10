@@ -23,9 +23,9 @@ const initCommand = (
       {} as FormattingConfiguration
     )
 
-    // Updating the configuration will trigger 3 `onDidChangeConfiguration`
-    // events. We need to ignore those to not unnecessarily toggle the status
-    // bar text.
+    // Updating the configuration programmatically will trigger multiple
+    // `onDidChangeConfiguration` events. We need to ignore those to not
+    // unnecessarily toggle the status bar text.
     extensionContext.globalState.update(
       'SHOULD_IGNORE_CONFIGURATION_CHANGES',
       true
@@ -50,6 +50,16 @@ const initCommand = (
       // The other formatting settings are *probably* safe to be toggled on.
       return editorConfiguration.update(setting, true, CONFIGURATION_TARGET)
     })
+
+    setTimeout(() => {
+      // Start listening to configuration changes again.
+      // We can’t do this in the change handler and we need to use `setTimeout`
+      // because of race conditions. It’s probably fine… :~}
+      extensionContext.globalState.update(
+        'SHOULD_IGNORE_CONFIGURATION_CHANGES',
+        false
+      )
+    }, 1000)
 
     extensionContext.globalState.update('TOGGLE_STATUS', !shouldDisable)
     statusBar.text = getStatusBarText(!shouldDisable)
