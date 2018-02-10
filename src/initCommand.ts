@@ -1,4 +1,4 @@
-import { commands, Disposable, StatusBarItem } from 'vscode'
+import { commands, Disposable, StatusBarItem, ExtensionContext } from 'vscode'
 import {
   COMMAND_NAME,
   FORMATTING_SETTINGS,
@@ -11,33 +11,28 @@ import getFormattingConfiguration, {
 import isFormattingActivated from './helpers/isFormattingActivated'
 import getStatusBarText from './helpers/getStatusBarText'
 
-interface InitCommandArgs {
+const initCommand = (
+  extensionContext: ExtensionContext,
   statusBar: StatusBarItem
-  shouldDisable: boolean
-  savedFormattingConfiguration: FormattingConfiguration
-}
-
-const initCommand = ({
-  statusBar,
-  shouldDisable,
-  savedFormattingConfiguration
-}: InitCommandArgs): Disposable =>
+): Disposable =>
   commands.registerCommand(`extension.${COMMAND_NAME}`, () => {
-    // Always re-update the toggle status in case the user has changed their
-    // config manually between two executions.
-    // The status bar text has automatically been updated already using the
-    // `onDidChangeConfiguration` event.
     const editorConfiguration = getEditorConfiguration()
-    const formattingConfiguration = getFormattingConfiguration(
-      editorConfiguration
+    const shouldDisable = extensionContext.globalState.get(
+      'TOGGLE_STATUS',
+      false
     )
-    shouldDisable = isFormattingActivated(formattingConfiguration)
+    const savedConfiguration = extensionContext.globalState.get(
+      'SAVED_CONFIGURATION',
+      {} as FormattingConfiguration
+    )
 
-    if (shouldDisable) {
-      // Save the formatting configuration before disabling it so that it can
-      // be restored on the next execution.
-      savedFormattingConfiguration = formattingConfiguration
-    }
+    // Updating the configuration will trigger 3 `onDidChangeConfiguration`
+    // events. We need to ignore those to not unnecessarily toggle the status
+    // bar text.
+    extensionContext.globalState.update(
+      'SHOULD_IGNORE_CONFIGURATION_CHANGES',
+      true
+    )
 
     FORMATTING_SETTINGS.forEach(setting => {
       if (shouldDisable) {
@@ -47,7 +42,7 @@ const initCommand = ({
       // `formatOnType` should only be toggled on if the user had enabled it
       // beforehand.
       if (setting === 'formatOnType') {
-        const initialValue = savedFormattingConfiguration[setting]
+        const initialValue = savedConfiguration[setting]
         return editorConfiguration.update(
           setting,
           initialValue,
@@ -59,8 +54,8 @@ const initCommand = ({
       return editorConfiguration.update(setting, true, CONFIGURATION_TARGET)
     })
 
-    shouldDisable = !shouldDisable
-    statusBar.text = getStatusBarText(shouldDisable)
+    extensionContext.globalState.update('TOGGLE_STATUS', !shouldDisable)
+    statusBar.text = getStatusBarText(!shouldDisable)
   })
 
 export default initCommand
