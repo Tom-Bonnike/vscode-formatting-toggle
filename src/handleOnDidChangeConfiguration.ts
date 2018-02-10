@@ -10,7 +10,7 @@ const handleOnDidChangeConfiguration = (
 ): Disposable =>
   workspace.onDidChangeConfiguration(event => {
     const shouldIgnoreConfigurationChange = extensionContext.globalState.get(
-      'SHOULD_IGNORE_CONFIGURATION_CHANGE',
+      'SHOULD_IGNORE_CONFIGURATION_CHANGES',
       false
     )
 
@@ -19,17 +19,28 @@ const handleOnDidChangeConfiguration = (
     if (shouldIgnoreConfigurationChange) {
       // Start listening to changes again.
       return extensionContext.globalState.update(
-        'SHOULD_IGNORE_CONFIGURATION_CHANGE',
+        'SHOULD_IGNORE_CONFIGURATION_CHANGES',
         false
       )
     }
 
     if (event.affectsConfiguration('editor')) {
-      const disableStatus = isFormattingActivated(
-        getFormattingConfiguration(getEditorConfiguration())
+      const newFormattingConfiguration = getFormattingConfiguration(
+        getEditorConfiguration()
       )
+      const shouldDisable = isFormattingActivated(newFormattingConfiguration)
 
-      statusBar.text = getStatusBarText(disableStatus)
+      if (shouldDisable) {
+        // Save the formatting configuration before disabling it so that it can
+        // be restored later.
+        extensionContext.globalState.update(
+          'SAVED_CONFIGURATION',
+          newFormattingConfiguration
+        )
+      }
+
+      extensionContext.globalState.update('TOGGLE_STATUS', shouldDisable)
+      statusBar.text = getStatusBarText(shouldDisable)
     }
   })
 

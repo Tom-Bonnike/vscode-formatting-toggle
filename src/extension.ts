@@ -7,20 +7,21 @@ import initCommand from './initCommand'
 import handleOnDidChangeConfiguration from './handleOnDidChangeConfiguration'
 
 export function activate(extensionContext: ExtensionContext) {
-  const initialEditorConfiguration = getEditorConfiguration()
   const initialFormattingConfiguration = getFormattingConfiguration(
-    initialEditorConfiguration
+    getEditorConfiguration()
   )
-  const initialDisableStatus = isFormattingActivated(
+  const initialToggleStatus = isFormattingActivated(
     initialFormattingConfiguration
   )
-  const statusBar = initStatusBar(initialDisableStatus)
-  const command = initCommand({
-    extensionContext,
-    statusBar,
-    shouldDisable: initialDisableStatus,
-    savedFormattingConfiguration: initialFormattingConfiguration
-  })
+
+  extensionContext.globalState.update(
+    'SAVED_FORMATTING_CONFIGURATION',
+    initialFormattingConfiguration
+  )
+  extensionContext.globalState.update('TOGGLE_STATUS', initialToggleStatus)
+
+  const statusBar = initStatusBar(initialToggleStatus)
+  const command = initCommand(extensionContext, statusBar)
   const onDidChangeConfigurationHandler = handleOnDidChangeConfiguration(
     extensionContext,
     statusBar
