@@ -40,13 +40,32 @@
       }
     ]
   },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "modulePathIgnorePatterns": ["out"],
+    "moduleNameMapper": {
+      "vscode": "<rootDir>/src/__mocks__/vscode.ts"
+    },
+    "testRegex": "spec.ts"
+  },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install",
     "start": "tsc -watch -p ./",
+    "test": "jest --verbose",
     "vscode:prepublish": "tsc -p ./"
   },
   "devDependencies": {
+    "@types/jest": "^22.1.2",
     "@types/lodash": "^4.14.92",
+    "@types/node": "^9.4.4",
+    "jest": "^22.2.2",
+    "ts-jest": "^22.0.3",
     "typescript": "^2.6.2"
   },
   "dependencies": {

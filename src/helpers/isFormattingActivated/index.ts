@@ -1,4 +1,4 @@
-import { FormattingConfiguration } from './getFormattingConfiguration'
+import { FormattingConfiguration } from '../getFormattingConfiguration'
 
 const isFormattingActivated = (
   formattingConfiguration: FormattingConfiguration
