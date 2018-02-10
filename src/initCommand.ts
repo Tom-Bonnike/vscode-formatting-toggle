@@ -3,10 +3,10 @@ import {
   COMMAND_NAME,
   FORMATTING_SETTINGS,
   CONFIGURATION_TARGET
-} from '../constants'
-import getEditorConfiguration from '../helpers/getEditorConfiguration'
-import getStatusBarText from '../helpers/getStatusBarText'
-import { FormattingConfiguration } from '../helpers/getFormattingConfiguration'
+} from './constants'
+import getEditorConfiguration from './helpers/getEditorConfiguration'
+import getStatusBarText from './helpers/getStatusBarText'
+import { FormattingConfiguration } from './helpers/getFormattingConfiguration'
 
 const initCommand = (
   extensionContext: ExtensionContext,
