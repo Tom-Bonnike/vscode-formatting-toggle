@@ -1,4 +1,4 @@
-import { commands, Disposable, StatusBarItem } from 'vscode'
+import { commands, Disposable, StatusBarItem, ExtensionContext } from 'vscode'
 import {
   COMMAND_NAME,
   FORMATTING_SETTINGS,
@@ -10,15 +10,16 @@ import getFormattingConfiguration, {
 } from './helpers/getFormattingConfiguration'
 import isFormattingActivated from './helpers/isFormattingActivated'
 import getStatusBarText from './helpers/getStatusBarText'
-import store from './store'
 
 interface InitCommandArgs {
+  extensionContext: ExtensionContext
   statusBar: StatusBarItem
   shouldDisable: boolean
   savedFormattingConfiguration: FormattingConfiguration
 }
 
 const initCommand = ({
+  extensionContext,
   statusBar,
   shouldDisable,
   savedFormattingConfiguration
@@ -43,7 +44,7 @@ const initCommand = ({
     // Updating the configuration will trigger 3 `onDidChangeConfiguration`
     // events. We need to ignore those to not toggle unnecessarily the status
     // bar text.
-    store.setState({ SHOULD_IGNORE_CONFIGURATION_CHANGE: true })
+    extensionContext.globalState.update('SHOULD_IGNORE_CONFIGURATION_CHANGE', true)
 
     FORMATTING_SETTINGS.forEach(setting => {
       if (shouldDisable) {

@@ -16,11 +16,13 @@ export function activate(extensionContext: ExtensionContext) {
   )
   const statusBar = initStatusBar(initialDisableStatus)
   const command = initCommand({
+    extensionContext,
     statusBar,
     shouldDisable: initialDisableStatus,
     savedFormattingConfiguration: initialFormattingConfiguration
   })
   const onDidChangeConfigurationHandler = handleOnDidChangeConfiguration(
+    extensionContext,
     statusBar
   )
 
