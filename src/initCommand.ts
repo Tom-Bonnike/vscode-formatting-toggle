@@ -10,6 +10,7 @@ import getFormattingConfiguration, {
 } from './helpers/getFormattingConfiguration'
 import isFormattingActivated from './helpers/isFormattingActivated'
 import getStatusBarText from './helpers/getStatusBarText'
+import store from './store'
 
 interface InitCommandArgs {
   statusBar: StatusBarItem
@@ -38,6 +39,11 @@ const initCommand = ({
       // be restored on the next execution.
       savedFormattingConfiguration = formattingConfiguration
     }
+
+    // Updating the configuration will trigger 3 `onDidChangeConfiguration`
+    // events. We need to ignore those to not toggle unnecessarily the status
+    // bar text.
+    store.setState({ SHOULD_IGNORE_CONFIGURATION_CHANGE: true })
 
     FORMATTING_SETTINGS.forEach(setting => {
       if (shouldDisable) {
