@@ -1,8 +1,8 @@
 import { workspace, ExtensionContext, StatusBarItem, Disposable } from 'vscode'
-import getEditorConfiguration from '../helpers/getEditorConfiguration'
-import getFormattingConfiguration from '../helpers/getFormattingConfiguration'
-import isFormattingActivated from '../helpers/isFormattingActivated'
-import getStatusBarText from '../helpers/getStatusBarText'
+import getEditorConfiguration from './helpers/getEditorConfiguration'
+import getFormattingConfiguration from './helpers/getFormattingConfiguration'
+import isFormattingActivated from './helpers/isFormattingActivated'
+import getStatusBarText from './helpers/getStatusBarText'
 
 const initOnDidChangeConfigurationHandler = (
   extensionContext: ExtensionContext,

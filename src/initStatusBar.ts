@@ -3,8 +3,8 @@ import {
   COMMAND_NAME,
   PRETTIER_STATUS_BAR_PRIORITY,
   TOOLTIP_TEXT
-} from '../constants'
-import getStatusBarText from '../helpers/getStatusBarText'
+} from './constants'
+import getStatusBarText from './helpers/getStatusBarText'
 
 const initStatusBar = (initialToggleStatus: boolean): StatusBarItem => {
   // `-1` matches the Prettier extension’s status bar priority (position). We
