@@ -40,13 +40,24 @@
       }
     ]
   },
+  "jest": {
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "spec.ts",
+    "moduleFileExtensions": ["ts", "js"]
+  },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install",
     "start": "tsc -watch -p ./",
+    "test": "jest",
     "vscode:prepublish": "tsc -p ./"
   },
   "devDependencies": {
+    "@types/jest": "^22.1.2",
     "@types/lodash": "^4.14.92",
+    "jest": "^22.2.2",
+    "ts-jest": "^22.0.3",
     "typescript": "^2.6.2"
   },
   "dependencies": {
