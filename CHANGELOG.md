@@ -2,6 +2,12 @@
 
 All notable changes to the “Status bar formatting toggle” extension will be documented in this file.
 
+## [1.2.0]
+
+* Match Prettier’s status bar text.
+* Stop relying on the initial formatting configuration.
+* Toggle the status bar text automatically when the user changes their configuration manually.
+
 ## [1.1.2]
 
 * Fix formatting settings not being toggled if they were all set to `false` when VSCode was first launched. `formatOnType` is now never toggled on if it wasn’t part of the user’s config beforehand.
