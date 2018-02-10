@@ -1,5 +1,5 @@
 import { WorkspaceConfiguration } from 'vscode'
-import { FORMATTING_SETTINGS } from '../constants'
+import { FORMATTING_SETTINGS } from '../../constants'
 
 export type FormattingConfiguration = {
   [formatOnPaste: string]: boolean
