@@ -1,15 +1,12 @@
-import { commands, Disposable, StatusBarItem, ExtensionContext } from 'vscode'
+import { commands, ExtensionContext, StatusBarItem, Disposable } from 'vscode'
 import {
   COMMAND_NAME,
   FORMATTING_SETTINGS,
   CONFIGURATION_TARGET
-} from './constants'
-import getEditorConfiguration from './helpers/getEditorConfiguration'
-import getFormattingConfiguration, {
-  FormattingConfiguration
-} from './helpers/getFormattingConfiguration'
-import isFormattingActivated from './helpers/isFormattingActivated'
-import getStatusBarText from './helpers/getStatusBarText'
+} from '../constants'
+import getEditorConfiguration from '../helpers/getEditorConfiguration'
+import getStatusBarText from '../helpers/getStatusBarText'
+import { FormattingConfiguration } from '../helpers/getFormattingConfiguration'
 
 const initCommand = (
   extensionContext: ExtensionContext,
@@ -17,11 +14,11 @@ const initCommand = (
 ): Disposable =>
   commands.registerCommand(`extension.${COMMAND_NAME}`, () => {
     const editorConfiguration = getEditorConfiguration()
-    const shouldDisable = extensionContext.globalState.get(
+    const shouldDisable: boolean = extensionContext.globalState.get(
       'TOGGLE_STATUS',
       false
     )
-    const savedConfiguration = extensionContext.globalState.get(
+    const savedConfiguration: FormattingConfiguration = extensionContext.globalState.get(
       'SAVED_CONFIGURATION',
       {} as FormattingConfiguration
     )

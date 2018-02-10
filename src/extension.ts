@@ -4,7 +4,7 @@ import getFormattingConfiguration from './helpers/getFormattingConfiguration'
 import isFormattingActivated from './helpers/isFormattingActivated'
 import initStatusBar from './initStatusBar'
 import initCommand from './initCommand'
-import handleOnDidChangeConfiguration from './handleOnDidChangeConfiguration'
+import initOnDidChangeConfigurationHandler from './initOnDidChangeConfigurationHandler'
 
 export function activate(extensionContext: ExtensionContext) {
   const initialFormattingConfiguration = getFormattingConfiguration(
@@ -22,7 +22,7 @@ export function activate(extensionContext: ExtensionContext) {
 
   const statusBar = initStatusBar(initialToggleStatus)
   const command = initCommand(extensionContext, statusBar)
-  const onDidChangeConfigurationHandler = handleOnDidChangeConfiguration(
+  const onDidChangeConfigurationHandler = initOnDidChangeConfigurationHandler(
     extensionContext,
     statusBar
   )

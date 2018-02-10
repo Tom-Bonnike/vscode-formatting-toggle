@@ -1,10 +1,10 @@
 import { window, StatusBarItem, StatusBarAlignment } from 'vscode'
 import {
   COMMAND_NAME,
-  TOOLTIP_TEXT,
-  PRETTIER_STATUS_BAR_PRIORITY
-} from './constants'
-import getStatusBarText from './helpers/getStatusBarText'
+  PRETTIER_STATUS_BAR_PRIORITY,
+  TOOLTIP_TEXT
+} from '../constants'
+import getStatusBarText from '../helpers/getStatusBarText'
 
 const initStatusBar = (initialToggleStatus: boolean): StatusBarItem => {
   // `-1` matches the Prettier extension’s status bar priority (position). We

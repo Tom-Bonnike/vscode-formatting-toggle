@@ -1,15 +1,15 @@
 import { workspace, ExtensionContext, StatusBarItem, Disposable } from 'vscode'
-import getEditorConfiguration from './helpers/getEditorConfiguration'
-import getFormattingConfiguration from './helpers/getFormattingConfiguration'
-import isFormattingActivated from './helpers/isFormattingActivated'
-import getStatusBarText from './helpers/getStatusBarText'
+import getEditorConfiguration from '../helpers/getEditorConfiguration'
+import getFormattingConfiguration from '../helpers/getFormattingConfiguration'
+import isFormattingActivated from '../helpers/isFormattingActivated'
+import getStatusBarText from '../helpers/getStatusBarText'
 
-const handleOnDidChangeConfiguration = (
+const initOnDidChangeConfigurationHandler = (
   extensionContext: ExtensionContext,
   statusBar: StatusBarItem
 ): Disposable =>
   workspace.onDidChangeConfiguration(event => {
-    const shouldIgnoreConfigurationChange = extensionContext.globalState.get(
+    const shouldIgnoreConfigurationChange: boolean = extensionContext.globalState.get(
       'SHOULD_IGNORE_CONFIGURATION_CHANGES',
       false
     )
@@ -44,4 +44,4 @@ const handleOnDidChangeConfiguration = (
     }
   })
 
-export default handleOnDidChangeConfiguration
+export default initOnDidChangeConfigurationHandler
