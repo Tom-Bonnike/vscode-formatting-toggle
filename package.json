@@ -1,17 +1,17 @@
 {
-  "name": "vscode-status-bar-format-toggle",
-  "displayName": "Status bar formatting toggle",
+  "name": "vscode-formatting-toggle",
+  "displayName": "Formatting toggle",
   "version": "1.2.0",
   "description": "A VS Code extension that allows you to toggle the formatter on and off with a simple click",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Tom-Bonnike/vscode-status-bar-format-toggle.git"
+    "url": "https://github.com/Tom-Bonnike/vscode-formatting-toggle.git"
   },
   "publisher": "tombonnike",
   "author": "Tom Bonnike (bonniketom@gmail.com)",
   "bugs": {
-    "url": "https://github.com/Tom-Bonnike/vscode-status-bar-format-toggle/issues"
+    "url": "https://github.com/Tom-Bonnike/vscode-formatting-toggle/issues"
   },
   "homepage": "https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle",
   "engines": {
@@ -21,8 +21,8 @@
     "disable",
     "toggle",
     "format",
-    "prettier",
-    "status bar"
+    "formatting",
+    "prettier"
   ],
   "categories": [
     "Other",
