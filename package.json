@@ -13,7 +13,7 @@
   "bugs": {
     "url": "https://github.com/Tom-Bonnike/vscode-formatting-toggle/issues"
   },
-  "homepage": "https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle",
+  "homepage": "https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-formatting-toggle",
   "engines": {
     "vscode": "^1.19.0"
   },
