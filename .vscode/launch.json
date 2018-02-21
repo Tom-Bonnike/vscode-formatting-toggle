@@ -1,8 +1,8 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "configurations": [
     {
-      "name": "vscode-status-bar-format-toggle",
+      "name": "vscode-formatting-toggle",
       "type": "extensionHost",
       "request": "launch",
       "runtimeExecutable": "${execPath}",

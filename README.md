@@ -1,10 +1,10 @@
-# Status bar formatting toggle
+# Formatting toggle
 
 A VS Code extension that allows you to toggle the formatter on and off with a simple click.
 
 ## Installation
 
-In the command palette (`CMD + SHIFT + P`) select Install Extension and choose “Status bar formatting toggle”.
+In the command palette (`CMD + SHIFT + P`) select Install Extension and choose “Formatting toggle”.
 
 ## Usage
 

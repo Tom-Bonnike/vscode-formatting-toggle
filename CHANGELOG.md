@@ -1,6 +1,10 @@
 # Change Log
 
-All notable changes to the “Status bar formatting toggle” extension will be documented in this file.
+All notable changes to the “Formatting toggle” extension will be documented in this file.
+
+## [1.3.0]
+
+* Rename extension to increase visibility on the Extensions Marketplace.
 
 ## [1.2.0]
 
