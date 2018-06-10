@@ -43,7 +43,7 @@
       "type": "object",
       "title": "Formatting Toggle’s configuration",
       "properties": {
-        "formattingToggle.activate": {
+        "formattingToggle.activateFor": {
           "type": "array",
           "default": ["formatOnPaste", "formatOnSave"],
           "description": "The events for which the formatter should be toggled back ON. Ignores `formatOnType` by default."
