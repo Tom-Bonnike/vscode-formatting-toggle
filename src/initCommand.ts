@@ -13,6 +13,9 @@ const initCommand = (
 ): Disposable =>
   commands.registerCommand(`extension.${COMMAND_NAME}`, () => {
     const editorConfiguration = getConfiguration('editor')
+    const activationConfiguration: Array<
+      string
+    > = extensionContext.globalState.get('ACTIVATION_CONFIGURATION', [])
     const shouldDisable: boolean = extensionContext.globalState.get(
       'TOGGLE_STATUS',
       false
@@ -31,7 +34,9 @@ const initCommand = (
         return editorConfiguration.update(setting, false, CONFIGURATION_TARGET)
       }
 
-      return editorConfiguration.update(setting, true, CONFIGURATION_TARGET)
+      if (activationConfiguration.includes(setting)) {
+        return editorConfiguration.update(setting, true, CONFIGURATION_TARGET)
+      }
     })
 
     setTimeout(() => {
