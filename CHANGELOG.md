@@ -1,6 +1,10 @@
 # Change Log
 
-All notable changes to the “Formatting toggle” extension will be documented in this file.
+All notable changes to the “Formatting Toggle” extension will be documented in this file.
+
+## [1.4.0]
+
+- Add `formattingToggle.activateFor` setting to allow users to choose which events the formatter should be activated back ON for. See README for usage examples.
 
 ## [1.3.0]
 
