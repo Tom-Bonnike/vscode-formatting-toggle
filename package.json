@@ -1,7 +1,7 @@
 {
   "name": "vscode-status-bar-format-toggle",
   "displayName": "Formatting Toggle",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A VS Code extension that allows you to toggle the formatter (Prettier, Beautify, …) ON and OFF with a simple click.",
   "license": "MIT",
   "repository": {
@@ -45,7 +45,10 @@
       "properties": {
         "formattingToggle.activateFor": {
           "type": "array",
-          "default": ["formatOnPaste", "formatOnSave"],
+          "default": [
+            "formatOnPaste",
+            "formatOnSave"
+          ],
           "description": "The events for which the formatter should be toggled back ON. Ignores `formatOnType` by default."
         }
       }
