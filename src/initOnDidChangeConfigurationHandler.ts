@@ -24,15 +24,6 @@ const initOnDidChangeConfigurationHandler = (
       )
       const shouldDisable = isFormattingActivated(newFormattingConfiguration)
 
-      if (shouldDisable) {
-        // Save the formatting configuration before disabling it so that it can
-        // be restored later.
-        extensionContext.globalState.update(
-          'SAVED_CONFIGURATION',
-          newFormattingConfiguration
-        )
-      }
-
       extensionContext.globalState.update('TOGGLE_STATUS', shouldDisable)
       statusBar.text = getStatusBarText(shouldDisable)
     }

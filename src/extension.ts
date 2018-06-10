@@ -14,10 +14,6 @@ export function activate(extensionContext: ExtensionContext) {
     initialFormattingConfiguration
   )
 
-  extensionContext.globalState.update(
-    'SAVED_FORMATTING_CONFIGURATION',
-    initialFormattingConfiguration
-  )
   extensionContext.globalState.update('TOGGLE_STATUS', initialToggleStatus)
 
   const statusBar = initStatusBar(initialToggleStatus)
