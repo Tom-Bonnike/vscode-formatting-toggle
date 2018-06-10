@@ -1,5 +1,7 @@
 import { WorkspaceConfiguration } from 'vscode'
 
+// This should be kept in sync with the default specified in the `package.json`
+// file: `contributes.configuration.properties.formattingToggle.activate.default`.
 export const DEFAULT_ACTIVATION_CONFIGURATION = [
   'formatOnPaste',
   'formatOnSave'
