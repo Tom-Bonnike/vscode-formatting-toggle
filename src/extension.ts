@@ -1,5 +1,5 @@
 import { ExtensionContext } from 'vscode'
-import getEditorConfiguration from './helpers/getEditorConfiguration'
+import getConfiguration from './helpers/getConfiguration'
 import getFormattingConfiguration from './helpers/getFormattingConfiguration'
 import isFormattingActivated from './helpers/isFormattingActivated'
 import initStatusBar from './initStatusBar'
@@ -8,7 +8,7 @@ import initOnDidChangeConfigurationHandler from './initOnDidChangeConfigurationH
 
 export function activate(extensionContext: ExtensionContext) {
   const initialFormattingConfiguration = getFormattingConfiguration(
-    getEditorConfiguration()
+    getConfiguration('editor')
   )
   const initialToggleStatus = isFormattingActivated(
     initialFormattingConfiguration

@@ -4,16 +4,15 @@ import {
   FORMATTING_SETTINGS,
   CONFIGURATION_TARGET
 } from './constants'
-import getEditorConfiguration from './helpers/getEditorConfiguration'
+import getConfiguration from './helpers/getConfiguration'
 import getStatusBarText from './helpers/getStatusBarText'
-import { FormattingConfiguration } from './helpers/getFormattingConfiguration'
 
 const initCommand = (
   extensionContext: ExtensionContext,
   statusBar: StatusBarItem
 ): Disposable =>
   commands.registerCommand(`extension.${COMMAND_NAME}`, () => {
-    const editorConfiguration = getEditorConfiguration()
+    const editorConfiguration = getConfiguration('editor')
     const shouldDisable: boolean = extensionContext.globalState.get(
       'TOGGLE_STATUS',
       false

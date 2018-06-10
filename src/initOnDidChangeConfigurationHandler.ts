@@ -1,5 +1,5 @@
 import { workspace, ExtensionContext, StatusBarItem, Disposable } from 'vscode'
-import getEditorConfiguration from './helpers/getEditorConfiguration'
+import getConfiguration from './helpers/getConfiguration'
 import getFormattingConfiguration from './helpers/getFormattingConfiguration'
 import isFormattingActivated from './helpers/isFormattingActivated'
 import getStatusBarText from './helpers/getStatusBarText'
@@ -20,7 +20,7 @@ const initOnDidChangeConfigurationHandler = (
 
     if (event.affectsConfiguration('editor')) {
       const newFormattingConfiguration = getFormattingConfiguration(
-        getEditorConfiguration()
+        getConfiguration('editor')
       )
       const shouldDisable = isFormattingActivated(newFormattingConfiguration)
 
