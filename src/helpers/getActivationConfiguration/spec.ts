@@ -9,7 +9,7 @@ const getExtensionConfiguration = (
   ({
     get: (key: string) => {
       const config: any = {
-        activate: ['formatOnPaste'],
+        activateFor: ['formatOnPaste'],
         ...additionalConfig
       }
 
