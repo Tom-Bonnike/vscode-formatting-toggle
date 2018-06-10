@@ -67,11 +67,11 @@
     "@types/lodash": "^4.14.92",
     "@types/node": "^9.4.4",
     "jest": "^22.2.2",
-    "ts-jest": "^22.0.3",
+    "ts-jest": "^22.4.6",
     "typescript": "^2.6.2"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
-    "vscode": "^1.1.10"
+    "lodash": "^4.17.10",
+    "vscode": "^1.1.18"
   }
 }
