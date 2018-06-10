@@ -38,7 +38,18 @@
         "command": "extension.toggleFormat",
         "title": "Toggle formatting"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Formatting Toggle’s configuration",
+      "properties": {
+        "formattingToggle.activate": {
+          "type": "array",
+          "default": ["formatOnPaste", "formatOnSave"],
+          "description": "The formatters that should be toggled back ON. Ignores `formatOnType` by default."
+        }
+      }
+    }
   },
   "jest": {
     "moduleFileExtensions": [

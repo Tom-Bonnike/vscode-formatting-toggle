@@ -44,4 +44,20 @@ describe('The `getFormattingConfiguration` helper', () => {
 
     expect(actual).toEqual(expected)
   })
+
+  // See https://github.com/Microsoft/vscode/issues/35451.
+  // it('should default the formatting settings to `false` if not found', () => {
+  //   const editorConfiguration = {
+  //     get: (key: string) => ({})
+  //   } as WorkspaceConfiguration
+  //   const expected = {
+  //     formatOnPaste: false,
+  //     formatOnSave: false,
+  //     formatOnType: false
+  //   }
+
+  //   const actual = getFormattingConfiguration(editorConfiguration)
+
+  //   expect(actual).toEqual(expected)
+  // })
 })

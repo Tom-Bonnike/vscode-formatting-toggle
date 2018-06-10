@@ -1,8 +1,9 @@
 import { workspace, ExtensionContext, StatusBarItem, Disposable } from 'vscode'
-import getEditorConfiguration from './helpers/getEditorConfiguration'
+import getConfiguration from './helpers/getConfiguration'
 import getFormattingConfiguration from './helpers/getFormattingConfiguration'
 import isFormattingActivated from './helpers/isFormattingActivated'
 import getStatusBarText from './helpers/getStatusBarText'
+import getActivationConfiguration from './helpers/getActivationConfiguration'
 
 const initOnDidChangeConfigurationHandler = (
   extensionContext: ExtensionContext,
@@ -20,21 +21,23 @@ const initOnDidChangeConfigurationHandler = (
 
     if (event.affectsConfiguration('editor')) {
       const newFormattingConfiguration = getFormattingConfiguration(
-        getEditorConfiguration()
+        getConfiguration('editor')
       )
       const shouldDisable = isFormattingActivated(newFormattingConfiguration)
 
-      if (shouldDisable) {
-        // Save the formatting configuration before disabling it so that it can
-        // be restored later.
-        extensionContext.globalState.update(
-          'SAVED_CONFIGURATION',
-          newFormattingConfiguration
-        )
-      }
-
       extensionContext.globalState.update('TOGGLE_STATUS', shouldDisable)
       statusBar.text = getStatusBarText(shouldDisable)
+    }
+
+    if (event.affectsConfiguration('formattingToggle')) {
+      const newActivationConfiguration = getActivationConfiguration(
+        getConfiguration('formattingToggle')
+      )
+
+      extensionContext.globalState.update(
+        'ACTIVATION_CONFIGURATION',
+        newActivationConfiguration
+      )
     }
   })
 

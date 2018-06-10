@@ -4,23 +4,21 @@ import {
   FORMATTING_SETTINGS,
   CONFIGURATION_TARGET
 } from './constants'
-import getEditorConfiguration from './helpers/getEditorConfiguration'
+import getConfiguration from './helpers/getConfiguration'
 import getStatusBarText from './helpers/getStatusBarText'
-import { FormattingConfiguration } from './helpers/getFormattingConfiguration'
 
 const initCommand = (
   extensionContext: ExtensionContext,
   statusBar: StatusBarItem
 ): Disposable =>
   commands.registerCommand(`extension.${COMMAND_NAME}`, () => {
-    const editorConfiguration = getEditorConfiguration()
+    const editorConfiguration = getConfiguration('editor')
+    const activationConfiguration: Array<
+      string
+    > = extensionContext.globalState.get('ACTIVATION_CONFIGURATION', [])
     const shouldDisable: boolean = extensionContext.globalState.get(
       'TOGGLE_STATUS',
       false
-    )
-    const savedConfiguration: FormattingConfiguration = extensionContext.globalState.get(
-      'SAVED_CONFIGURATION',
-      {} as FormattingConfiguration
     )
 
     // Updating the configuration programmatically will trigger multiple
@@ -36,19 +34,9 @@ const initCommand = (
         return editorConfiguration.update(setting, false, CONFIGURATION_TARGET)
       }
 
-      // `formatOnType` should only be toggled on if the user had enabled it
-      // beforehand.
-      if (setting === 'formatOnType') {
-        const initialValue = savedConfiguration[setting]
-        return editorConfiguration.update(
-          setting,
-          initialValue,
-          CONFIGURATION_TARGET
-        )
+      if (activationConfiguration.includes(setting)) {
+        return editorConfiguration.update(setting, true, CONFIGURATION_TARGET)
       }
-
-      // The other formatting settings are *probably* safe to be toggled on.
-      return editorConfiguration.update(setting, true, CONFIGURATION_TARGET)
     })
 
     setTimeout(() => {
