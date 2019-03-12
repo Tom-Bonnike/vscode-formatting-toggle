@@ -10,6 +10,7 @@
   },
   "publisher": "tombonnike",
   "author": "Tom Bonnike (bonniketom@gmail.com)",
+  "icon": "icon.png",
   "bugs": {
     "url": "https://github.com/Tom-Bonnike/vscode-formatting-toggle/issues"
   },
