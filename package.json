@@ -16,7 +16,7 @@
   },
   "homepage": "https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle",
   "engines": {
-    "vscode": "^1.19.0"
+    "vscode": "^1.38.0"
   },
   "keywords": [
     "disable",
@@ -36,7 +36,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.toggleFormat",
+        "command": "formattingToggle.toggleFormat",
         "title": "Toggle formatting"
       }
     ],
@@ -72,28 +72,17 @@
     "testRegex": "spec.ts"
   },
   "scripts": {
-    "postinstall": "node ./node_modules/vscode/bin/install",
     "start": "tsc -watch -p ./",
     "test": "jest --verbose",
     "vscode:prepublish": "tsc -p ./"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.6",
-    "@types/lodash": "^4.14.92",
-    "@types/node": "^11.9.4",
-    "clean-slate-lint": "^1.0.9",
-    "jest": "^24.1.0",
-    "ts-jest": "^24.0.0",
-    "typescript": "^3.3.3",
-    "vscode": "^1.1.30"
-  },
-  "dependencies": {
-    "lodash": "^4.17.11"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "./node_modules/.bin/clean-slate-lint",
-      "pre-rewrite": "./node_modules/.bin/clean-slate-lint"
-    }
+    "@babel/types": "^7.6.1",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.11",
+    "@types/vscode": "^1.38.0",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.3"
   }
 }

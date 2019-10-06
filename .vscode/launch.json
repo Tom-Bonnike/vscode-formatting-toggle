@@ -2,13 +2,14 @@
   "version": "1.5.0",
   "configurations": [
     {
-      "name": "vscode-status-bar-format-toggle",
+      "name": "Launch VSCode with the extension installed",
       "type": "extensionHost",
       "request": "launch",
       "runtimeExecutable": "${execPath}",
-      "args": ["--extensionDevelopmentPath=${workspaceRoot}"],
-      "stopOnEntry": false,
-      "sourceMaps": true,
+      "args": [
+        "--disable-extensions",
+        "--extensionDevelopmentPath=${workspaceRoot}"
+      ],
       "outFiles": ["${workspaceRoot}/out/**/*.js"]
     }
   ]

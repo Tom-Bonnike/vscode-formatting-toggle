@@ -1,14 +1,11 @@
-import { workspace, window, WorkspaceConfiguration } from 'vscode'
-import { get } from 'lodash'
+import { workspace, window } from 'vscode'
 
 type ConfigurationNamespace = 'editor' | 'formattingToggle'
 
-const getConfiguration = (
-  namespace: ConfigurationNamespace
-): WorkspaceConfiguration =>
+const getConfiguration = (namespace: ConfigurationNamespace) =>
   workspace.getConfiguration(
     namespace,
-    get(window, 'activeTextEditor.document.uri')
+    window.activeTextEditor ? window.activeTextEditor.document.uri : null
   )
 
 export default getConfiguration
