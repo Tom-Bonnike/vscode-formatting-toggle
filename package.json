@@ -32,7 +32,7 @@
   "activationEvents": [
     "*"
   ],
-  "main": "./out/src/extension",
+  "main": "./out/extension",
   "contributes": {
     "commands": [
       {
@@ -64,7 +64,8 @@
       "^.+\\.ts$": "ts-jest"
     },
     "modulePathIgnorePatterns": [
-      "out"
+      "out",
+      "integration"
     ],
     "moduleNameMapper": {
       "vscode": "<rootDir>/src/__mocks__/vscode.ts"
@@ -72,8 +73,9 @@
     "testRegex": "spec.ts"
   },
   "scripts": {
+    "integration": "node out/integration/testRunner.js",
     "start": "tsc -watch -p ./",
-    "test": "jest --verbose",
+    "unit": "jest --verbose",
     "vscode:prepublish": "tsc -p ./"
   },
   "devDependencies": {
@@ -83,6 +85,7 @@
     "@types/vscode": "^1.38.0",
     "jest": "^24.9.0",
     "ts-jest": "^24.1.0",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.3",
+    "vscode-test": "^1.2.0"
   }
 }

@@ -1,11 +1,11 @@
 import { commands, ConfigurationTarget } from 'vscode'
-import { COMMAND_NAME, FORMATTING_SETTINGS } from './constants'
+import {
+  COMMAND_NAME,
+  FORMATTING_SETTINGS,
+  DEFAULT_ACTIVATION_CONFIGURATION
+} from './constants'
 import getConfiguration from './helpers/getConfiguration'
 import isFormattingActivated from './helpers/isFormattingActivated'
-
-// This should be kept in sync with the default specified in the `package.json`
-// file: `contributes.configuration.properties.formattingToggle.activateFor.default`.
-const DEFAULT_ACTIVATION_CONFIGURATION = ['formatOnPaste', 'formatOnSave']
 
 const getActivationConfiguration = () => {
   const extensionConfiguration = getConfiguration('formattingToggle')

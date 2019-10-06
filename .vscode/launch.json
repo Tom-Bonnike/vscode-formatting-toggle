@@ -11,6 +11,18 @@
         "--extensionDevelopmentPath=${workspaceRoot}"
       ],
       "outFiles": ["${workspaceRoot}/out/**/*.js"]
+    },
+    {
+      "name": "Run integration tests for the extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--disable-extensions",
+        "--extensionDevelopmentPath=${workspaceRoot}",
+        "--extensionTestsPath=${workspaceRoot}/out/integration/index"
+      ],
+      "outFiles": ["${workspaceRoot}/out/integration/**/*.js"]
     }
   ]
 }
