@@ -1,37 +1,75 @@
-import isFormattingActivated from './'
+import getConfiguration from '../getConfiguration'
+import isFormattingActivated, { FormattingConfiguration } from './'
+
+jest.mock('../getConfiguration')
+
+const mockedGetConfiguration = getConfiguration as jest.Mock
+
+const mockGetConfiguration = (settings: FormattingConfiguration) =>
+  mockedGetConfiguration.mockImplementationOnce(() => ({
+    get: (setting: keyof FormattingConfiguration) => settings[setting]
+  }))
 
 describe('The `isFormattingActivated` helper', () => {
   it('should return `true` if any of the formatting settings is enabled', () => {
-    const expected = true
-    const actual1 = isFormattingActivated({
-      formatOnPaste: true,
-      formatOnSave: false,
-      formatOnType: false
-    })
-    const actual2 = isFormattingActivated({
-      formatOnPaste: true,
-      formatOnSave: true,
-      formatOnType: false
-    })
-    const actual3 = isFormattingActivated({
-      formatOnPaste: true,
-      formatOnSave: true,
-      formatOnType: true
-    })
+    const testCases = [
+      {
+        formatOnPaste: true,
+        formatOnSave: false,
+        formatOnType: false
+      },
+      {
+        formatOnPaste: false,
+        formatOnSave: true,
+        formatOnType: false
+      },
+      {
+        formatOnPaste: false,
+        formatOnSave: false,
+        formatOnType: true
+      },
+      {
+        formatOnPaste: false,
+        formatOnSave: true,
+        formatOnType: true
+      },
+      {
+        formatOnPaste: true,
+        formatOnSave: false,
+        formatOnType: true
+      },
+      {
+        formatOnPaste: true,
+        formatOnSave: true,
+        formatOnType: false
+      },
+      {
+        formatOnPaste: true,
+        formatOnSave: true,
+        formatOnType: true
+      }
+    ]
 
-    expect(actual1).toEqual(expected)
-    expect(actual2).toEqual(expected)
-    expect(actual3).toEqual(expected)
+    testCases.forEach((configuration: FormattingConfiguration) => {
+      mockGetConfiguration(configuration)
+
+      const expected = true
+      const actual = isFormattingActivated()
+
+      expect(expected).toEqual(actual)
+    })
   })
 
-  it('should return `false` otherwise', () => {
-    const expected = false
-    const actual = isFormattingActivated({
+  it('should return `false` if the formatting settings are all disabled', () => {
+    mockGetConfiguration({
       formatOnPaste: false,
       formatOnSave: false,
       formatOnType: false
     })
 
-    expect(actual).toEqual(expected)
+    const expected = false
+    const actual = isFormattingActivated()
+
+    expect(expected).toEqual(actual)
   })
 })

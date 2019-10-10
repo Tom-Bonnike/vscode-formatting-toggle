@@ -1,13 +1,17 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "out",
+    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es5",
-    "outDir": "out",
-    "lib": ["es2017"],
+    "esModuleInterop": true,
     "sourceMap": true,
     "strict": true,
-    "rootDir": "."
+    "forceConsistentCasingInFileNames": true,
+    "noStrictGenericChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
-  "exclude": [".vscode", "node_modules", "out"]
+  "exclude": [".vscode", "node_modules", "out", "src/__mocks__"]
 }

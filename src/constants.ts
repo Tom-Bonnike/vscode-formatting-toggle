@@ -1,13 +1,14 @@
-import { ConfigurationTarget } from 'vscode'
-
-export const COMMAND_NAME = 'toggleFormat'
+// This should be kept in sync with the command name specified in the
+// `package.json` file: `contributes.commands[0].command`.
+export const COMMAND_NAME = 'formattingToggle.toggleFormat'
 export const FORMATTING_SETTINGS = [
   'formatOnPaste',
   'formatOnSave',
   'formatOnType'
 ]
-export const CONFIGURATION_TARGET = ConfigurationTarget.Global
-export const PRETTIER_STATUS_BAR_PRIORITY = -1
-export const TOOLTIP_TEXT = 'Enable/Disable the formatter'
-export const ENABLED_TEXT = 'Formatting: $(check)'
-export const DISABLED_TEXT = 'Formatting: $(x)'
+// This should be kept in sync with the default specified in the `package.json`
+// file: `contributes.configuration.properties.formattingToggle.activateFor.default`.
+export const DEFAULT_ACTIVATION_CONFIGURATION = [
+  'formatOnPaste',
+  'formatOnSave'
+]
