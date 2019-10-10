@@ -7,26 +7,13 @@ export type FormattingConfiguration = {
   formatOnType: boolean
 }
 
-export const getFormattingConfiguration = () => {
+const isFormattingActivated = () => {
   const editorConfiguration = getConfiguration('editor')
-  const formattingConfiguration = FORMATTING_SETTINGS.reduce(
-    (configuration, setting) => {
-      configuration[
-        setting as keyof FormattingConfiguration
-      ] = editorConfiguration.get(setting, false)
-
-      return configuration
-    },
-    {} as FormattingConfiguration
+  const isAnySettingActivated = FORMATTING_SETTINGS.some(setting =>
+    editorConfiguration.get(setting, false)
   )
 
-  return formattingConfiguration
-}
-
-const isFormattingActivated = () => {
-  const formattingConfiguration = getFormattingConfiguration()
-
-  return Object.values(formattingConfiguration).some(Boolean)
+  return isAnySettingActivated
 }
 
 export default isFormattingActivated

@@ -45,12 +45,23 @@
       "title": "Formatting Toggle’s configuration",
       "properties": {
         "formattingToggle.activateFor": {
+          "scope": "resource",
           "type": "array",
           "default": [
             "formatOnPaste",
             "formatOnSave"
           ],
           "description": "The events for which the formatter should be toggled back ON. Ignores `formatOnType` by default."
+        },
+        "formattingToggle.deactivateFor": {
+          "scope": "resource",
+          "type": "array",
+          "default": [
+            "formatOnPaste",
+            "formatOnSave",
+            "formatOnType"
+          ],
+          "description": "The events (all of them by default) for which the formatter should be toggled back OFF."
         }
       }
     }
