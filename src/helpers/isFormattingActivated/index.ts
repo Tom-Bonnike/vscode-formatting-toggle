@@ -1,19 +1,29 @@
-import { FORMATTING_SETTINGS } from '../../constants'
+import {
+  FORMATTING_SETTINGS,
+  DEFAULT_AFFECTS_CONFIGURATION,
+  FormattingSettings
+} from '../../constants'
 import getConfiguration from '../getConfiguration'
 
 export type FormattingConfiguration = {
-  formatOnPaste: boolean
-  formatOnSave: boolean
-  formatOnType: boolean
+  [key in FormattingSettings]: boolean
 }
 
 const isFormattingActivated = () => {
   const editorConfiguration = getConfiguration('editor')
-  const isAnySettingActivated = FORMATTING_SETTINGS.some(setting =>
-    editorConfiguration.get(setting, false)
+  const formattingToggleConfiguration = getConfiguration('formattingToggle')
+  const affectsConfiguration = formattingToggleConfiguration.get(
+    'affects',
+    DEFAULT_AFFECTS_CONFIGURATION
   )
+  const isAnyRelevantSettingActivated = FORMATTING_SETTINGS.some(setting => {
+    const isRelevantSetting = affectsConfiguration.includes(setting)
+    const isSettingActivated = editorConfiguration.get(setting, false)
 
-  return isAnySettingActivated
+    return isRelevantSetting && isSettingActivated
+  })
+
+  return isAnyRelevantSettingActivated
 }
 
 export default isFormattingActivated
