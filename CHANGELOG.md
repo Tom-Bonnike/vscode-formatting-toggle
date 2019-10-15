@@ -2,6 +2,12 @@
 
 All notable changes to the “Formatting Toggle” extension will be documented in this file.
 
+## [2.0.0]
+
+- ⚠️ Breaking: remove `formattingToggle.activateFor` option.
+- Add `formattingToggle.affects` option. See the [README](./README.md) for usage examples.
+- Fix status bar text not being synced across multiple VS Code windows.
+
 ## [1.5.0]
 
 - Add an icon to increase visibility on the Extensions Marketplace.
