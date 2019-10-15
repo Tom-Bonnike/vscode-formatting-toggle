@@ -44,13 +44,15 @@
       "type": "object",
       "title": "Formatting Toggle’s configuration",
       "properties": {
-        "formattingToggle.activateFor": {
+        "formattingToggle.affects": {
+          "scope": "resource",
           "type": "array",
           "default": [
             "formatOnPaste",
-            "formatOnSave"
+            "formatOnSave",
+            "formatOnType"
           ],
-          "description": "The events for which the formatter should be toggled back ON. Ignores `formatOnType` by default."
+          "description": "The events for which the extension should toggle the formatting for. Affects all events (formatOnPaste, formatOnSave, formatOnType) by default."
         }
       }
     }

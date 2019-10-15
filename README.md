@@ -12,16 +12,35 @@ The extension should show up on the right side of the status bar. Simply click i
 
 ## Customisation
 
-By default, Formatting Toggle only puts the formatter back ON for the `PASTE` and `SAVE` events. To disable one of those or to re-enable the formatter for the `TYPE` event, you will have to configure it using the `formattingToggle.activateFor` setting.
+By default, Formatting Toggle toggles the formatter for all formatting events: `formatOnPaste`, `formatOnSave` and `formatOnType`. To ignore one of these and leave the value that is defined in your settings unchanged, you can use the `formattingToggle.affects` setting in your editor settings (Code > Preferences > Settings).
 
-#### Examples
+### Examples
 
-To allow the formatter to be put back ON **only** for the `SAVE` event:
+#### Keeping `formatOnPaste` and `formatOnType` enabled at all times:
 
-- Go to your Settings (Code > Preferences > Settings).
-- Add `"formattingToggle.activateFor": ["formatOnSave"]`.
+```json
+{
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "formattingToggle.affects": ["formatOnSave"]
+}
+```
 
-To allow the formatter to be put back ON for **all** events:
+#### Keeping `formatOnType` disabled at all times:
 
-- Go to your Settings (Code > Preferences > Settings).
-- Add `"formattingToggle.activateFor": ["formatOnPaste", "formatOnSave", "formatOnType"]`.
+```json
+{
+  "editor.formatOnType": false,
+  "formattingToggle.affects": ["formatOnPaste", "formatOnSave"]
+}
+```
+
+Note: this was the default behaviour before version 2.0.0 of the extension.
+
+#### Allow the formatter to be toggled for all events (default):
+
+```json
+{
+  "formattingToggle.affects": ["formatOnPaste", "formatOnSave", "formatOnType"]
+}
+```

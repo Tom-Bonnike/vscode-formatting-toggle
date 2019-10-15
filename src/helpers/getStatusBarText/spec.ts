@@ -1,13 +1,13 @@
-import isFormattingActivated from '../isFormattingActivated'
+import getIsFormattingActivated from '../getIsFormattingActivated'
 import getStatusBarText, { ENABLED_TEXT, DISABLED_TEXT } from './'
 
-jest.mock('../isFormattingActivated')
+jest.mock('../getIsFormattingActivated')
 
-const mockedIsFormattingActivated = isFormattingActivated as jest.Mock
+const mockedGetIsFormattingActivated = getIsFormattingActivated as jest.Mock
 
 describe('The `getStatusBarText` helper', () => {
   it(`should return \`${ENABLED_TEXT}\` if the formatting is enabled`, () => {
-    mockedIsFormattingActivated.mockReturnValueOnce(true)
+    mockedGetIsFormattingActivated.mockReturnValueOnce(true)
 
     const expected = ENABLED_TEXT
     const actual = getStatusBarText()
@@ -16,7 +16,7 @@ describe('The `getStatusBarText` helper', () => {
   })
 
   it(`should return \`${DISABLED_TEXT}\` if the formatting is disabled`, () => {
-    mockedIsFormattingActivated.mockReturnValueOnce(false)
+    mockedGetIsFormattingActivated.mockReturnValueOnce(false)
 
     const expected = DISABLED_TEXT
     const actual = getStatusBarText()
