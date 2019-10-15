@@ -9,7 +9,7 @@ export type FormattingConfiguration = {
   [key in FormattingSettings]: boolean
 }
 
-const isFormattingActivated = () => {
+const getIsFormattingActivated = () => {
   const editorConfiguration = getConfiguration('editor')
   const formattingToggleConfiguration = getConfiguration('formattingToggle')
   const affectsConfiguration = formattingToggleConfiguration.get(
@@ -26,4 +26,4 @@ const isFormattingActivated = () => {
   return isAnyRelevantSettingActivated
 }
 
-export default isFormattingActivated
+export default getIsFormattingActivated

@@ -5,7 +5,7 @@ import {
   DEFAULT_AFFECTS_CONFIGURATION
 } from './constants'
 import getConfiguration from './helpers/getConfiguration'
-import isFormattingActivated from './helpers/isFormattingActivated'
+import getIsFormattingActivated from './helpers/getIsFormattingActivated'
 
 const registerCommand = () =>
   commands.registerCommand(COMMAND_NAME, () => {
@@ -15,7 +15,7 @@ const registerCommand = () =>
       'affects',
       DEFAULT_AFFECTS_CONFIGURATION
     )
-    const shouldDisableFormatting = isFormattingActivated()
+    const isFormattingActivated = getIsFormattingActivated()
 
     // Updating the configuration will trigger the `onDidChangeConfiguration`
     // handler which will correctly update the text and icon in the status bar.
@@ -23,7 +23,7 @@ const registerCommand = () =>
       if (affectsConfiguration.includes(setting)) {
         editorConfiguration.update(
           setting,
-          !shouldDisableFormatting,
+          !isFormattingActivated,
           ConfigurationTarget.Global
         )
       }
