@@ -1,3 +1,5 @@
+<a href="https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle#overview"><img src="https://vsmarketplacebadge.apphb.com/version/tombonnike.vscode-status-bar-format-toggle.svg" /> <img src="https://vsmarketplacebadge.apphb.com/installs-short/tombonnike.vscode-status-bar-format-toggle.svg" /></a> <a href="https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle#review-details"><img src="https://vsmarketplacebadge.apphb.com/rating-star/tombonnike.vscode-status-bar-format-toggle.svg" /></a>
+
 # Formatting Toggle
 
 A VS Code extension that allows you to toggle the formatter (Prettier, Beautify, …) ON and OFF with a simple click.
