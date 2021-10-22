@@ -2,7 +2,7 @@
 
 # Formatting Toggle
 
-A VS Code extension that allows you to toggle the formatter (Prettier, Beautify, …) ON and OFF with a simple click.
+A VS Code extension that allows you to toggle formatting settings ON and OFF with a simple click.
 
 ## Installation
 
@@ -10,9 +10,11 @@ In the command palette (`CMD + SHIFT + P`) select “Install Extension” and ch
 
 ## Usage
 
-The extension should show up on the right side of the status bar. Simply click it to toggle the formatter ON and OFF. Alternatively, in the command palette (`CMD + SHIFT + P`), run the “Toggle Formatting” command.
+The extension should show up on the right side of the status bar. Simply click it to toggle the formatting settings ON and OFF. Alternatively, in the command palette (`CMD + SHIFT + P`), run the “Toggle Formatting” command.
 
-## Customisation
+⚠️ Formatting Toggle cannot override your workspace settings. Consider using ignore configurations (like `.prettierignore`) instead.
+
+## Customization
 
 By default, Formatting Toggle toggles the formatter for all formatting events: `formatOnPaste`, `formatOnSave` and `formatOnType`. To ignore one of these and leave the value that is defined in your settings unchanged, you can use the `formattingToggle.affects` setting in your editor settings (Code > Preferences > Settings).
 
@@ -36,8 +38,6 @@ By default, Formatting Toggle toggles the formatter for all formatting events: `
   "formattingToggle.affects": ["formatOnPaste", "formatOnSave"]
 }
 ```
-
-Note: this was the default behaviour before version 2.0.0 of the extension.
 
 #### Allow the formatter to be toggled for all events (default):
 
