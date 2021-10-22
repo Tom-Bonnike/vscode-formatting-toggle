@@ -22,9 +22,9 @@ const mockGetConfiguration = (configurationMock: ConfigurationMock) =>
       return {
         get: (setting: Setting, defaultValue: any) =>
           // @ts-ignore 😤
-          relevantConfiguration[setting] || defaultValue
+          relevantConfiguration[setting] || defaultValue,
       }
-    }
+    },
   )
 
 describe('The `getIsFormattingActivated` helper', () => {
@@ -34,51 +34,51 @@ describe('The `getIsFormattingActivated` helper', () => {
         editor: {
           formatOnPaste: true,
           formatOnSave: false,
-          formatOnType: false
-        }
+          formatOnType: false,
+        },
       },
       {
         editor: {
           formatOnPaste: false,
           formatOnSave: true,
-          formatOnType: false
-        }
+          formatOnType: false,
+        },
       },
       {
         editor: {
           formatOnPaste: false,
           formatOnSave: false,
-          formatOnType: true
-        }
+          formatOnType: true,
+        },
       },
       {
         editor: {
           formatOnPaste: false,
           formatOnSave: true,
-          formatOnType: true
-        }
+          formatOnType: true,
+        },
       },
       {
         editor: {
           formatOnPaste: true,
           formatOnSave: false,
-          formatOnType: true
-        }
+          formatOnType: true,
+        },
       },
       {
         editor: {
           formatOnPaste: true,
           formatOnSave: true,
-          formatOnType: false
-        }
+          formatOnType: false,
+        },
       },
       {
         editor: {
           formatOnPaste: true,
           formatOnSave: true,
-          formatOnType: true
-        }
-      }
+          formatOnType: true,
+        },
+      },
     ]
 
     testCases.forEach((configurationMock: ConfigurationMock) => {
@@ -97,60 +97,60 @@ describe('The `getIsFormattingActivated` helper', () => {
         editor: {
           formatOnPaste: true,
           formatOnSave: false,
-          formatOnType: false
+          formatOnType: false,
         },
-        formattingToggle: { affects: ['formatOnPaste'] }
+        formattingToggle: { affects: ['formatOnPaste'] },
       },
       {
         editor: {
           formatOnPaste: false,
           formatOnSave: true,
-          formatOnType: false
+          formatOnType: false,
         },
-        formattingToggle: { affects: ['formatOnSave'] }
+        formattingToggle: { affects: ['formatOnSave'] },
       },
       {
         editor: {
           formatOnPaste: false,
           formatOnSave: false,
-          formatOnType: true
+          formatOnType: true,
         },
-        formattingToggle: { affects: ['formatOnType'] }
+        formattingToggle: { affects: ['formatOnType'] },
       },
       {
         editor: {
           formatOnPaste: false,
           formatOnSave: true,
-          formatOnType: true
+          formatOnType: true,
         },
-        formattingToggle: { affects: ['formatOnSave', 'formatOnType'] }
+        formattingToggle: { affects: ['formatOnSave', 'formatOnType'] },
       },
       {
         editor: {
           formatOnPaste: true,
           formatOnSave: false,
-          formatOnType: true
+          formatOnType: true,
         },
-        formattingToggle: { affects: ['formatOnPaste', 'formatOnType'] }
+        formattingToggle: { affects: ['formatOnPaste', 'formatOnType'] },
       },
       {
         editor: {
           formatOnPaste: true,
           formatOnSave: true,
-          formatOnType: false
+          formatOnType: false,
         },
-        formattingToggle: { affects: ['formatOnPaste', 'formatOnSave'] }
+        formattingToggle: { affects: ['formatOnPaste', 'formatOnSave'] },
       },
       {
         editor: {
           formatOnPaste: true,
           formatOnSave: true,
-          formatOnType: true
+          formatOnType: true,
         },
         formattingToggle: {
-          affects: ['formatOnPaste', 'formatOnSave', 'formatOnType']
-        }
-      }
+          affects: ['formatOnPaste', 'formatOnSave', 'formatOnType'],
+        },
+      },
     ]
 
     testCases.forEach((configurationMock: ConfigurationMock) => {
@@ -168,8 +168,8 @@ describe('The `getIsFormattingActivated` helper', () => {
       editor: {
         formatOnPaste: false,
         formatOnSave: false,
-        formatOnType: false
-      }
+        formatOnType: false,
+      },
     })
 
     const expected = false
@@ -184,60 +184,60 @@ describe('The `getIsFormattingActivated` helper', () => {
         editor: {
           formatOnPaste: false,
           formatOnSave: true,
-          formatOnType: true
+          formatOnType: true,
         },
-        formattingToggle: { affects: ['formatOnPaste'] }
+        formattingToggle: { affects: ['formatOnPaste'] },
       },
       {
         editor: {
           formatOnPaste: true,
           formatOnSave: false,
-          formatOnType: true
+          formatOnType: true,
         },
-        formattingToggle: { affects: ['formatOnSave'] }
+        formattingToggle: { affects: ['formatOnSave'] },
       },
       {
         editor: {
           formatOnPaste: true,
           formatOnSave: true,
-          formatOnType: false
+          formatOnType: false,
         },
-        formattingToggle: { affects: ['formatOnType'] }
+        formattingToggle: { affects: ['formatOnType'] },
       },
       {
         editor: {
           formatOnPaste: true,
           formatOnSave: false,
-          formatOnType: false
+          formatOnType: false,
         },
-        formattingToggle: { affects: ['formatOnSave', 'formatOnType'] }
+        formattingToggle: { affects: ['formatOnSave', 'formatOnType'] },
       },
       {
         editor: {
           formatOnPaste: false,
           formatOnSave: true,
-          formatOnType: false
+          formatOnType: false,
         },
-        formattingToggle: { affects: ['formatOnPaste', 'formatOnType'] }
+        formattingToggle: { affects: ['formatOnPaste', 'formatOnType'] },
       },
       {
         editor: {
           formatOnPaste: false,
           formatOnSave: false,
-          formatOnType: true
+          formatOnType: true,
         },
-        formattingToggle: { affects: ['formatOnPaste', 'formatOnSave'] }
+        formattingToggle: { affects: ['formatOnPaste', 'formatOnSave'] },
       },
       {
         editor: {
           formatOnPaste: false,
           formatOnSave: false,
-          formatOnType: false
+          formatOnType: false,
         },
         formattingToggle: {
-          affects: ['formatOnPaste', 'formatOnSave', 'formatOnType']
-        }
-      }
+          affects: ['formatOnPaste', 'formatOnSave', 'formatOnType'],
+        },
+      },
     ]
 
     testCases.forEach((configurationMock: ConfigurationMock) => {

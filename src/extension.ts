@@ -6,9 +6,8 @@ import getOnDidChangeConfigurationHandler from './getOnDidChangeConfigurationHan
 export function activate({ subscriptions }: ExtensionContext) {
   const command = registerCommand()
   const statusBarItem = createStatusBarItem()
-  const onDidChangeConfigurationHandler = getOnDidChangeConfigurationHandler(
-    statusBarItem
-  )
+  const onDidChangeConfigurationHandler =
+    getOnDidChangeConfigurationHandler(statusBarItem)
 
   subscriptions.push(statusBarItem)
   subscriptions.push(command)

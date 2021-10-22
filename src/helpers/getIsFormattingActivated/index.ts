@@ -1,7 +1,7 @@
 import {
   FORMATTING_SETTINGS,
   DEFAULT_AFFECTS_CONFIGURATION,
-  FormattingSettings
+  FormattingSettings,
 } from '../../constants'
 import getConfiguration from '../getConfiguration'
 
@@ -14,7 +14,7 @@ const getIsFormattingActivated = () => {
   const formattingToggleConfiguration = getConfiguration('formattingToggle')
   const affectsConfiguration = formattingToggleConfiguration.get(
     'affects',
-    DEFAULT_AFFECTS_CONFIGURATION
+    DEFAULT_AFFECTS_CONFIGURATION,
   )
   const isAnyRelevantSettingActivated = FORMATTING_SETTINGS.some(setting => {
     const isRelevantSetting = affectsConfiguration.includes(setting)

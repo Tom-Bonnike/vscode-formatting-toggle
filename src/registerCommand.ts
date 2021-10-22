@@ -2,7 +2,7 @@ import { commands, ConfigurationTarget } from 'vscode'
 import {
   COMMAND_NAME,
   FORMATTING_SETTINGS,
-  DEFAULT_AFFECTS_CONFIGURATION
+  DEFAULT_AFFECTS_CONFIGURATION,
 } from './constants'
 import getConfiguration from './helpers/getConfiguration'
 import getIsFormattingActivated from './helpers/getIsFormattingActivated'
@@ -13,7 +13,7 @@ const registerCommand = () =>
     const formattingToggleConfiguration = getConfiguration('formattingToggle')
     const affectsConfiguration = formattingToggleConfiguration.get(
       'affects',
-      DEFAULT_AFFECTS_CONFIGURATION
+      DEFAULT_AFFECTS_CONFIGURATION,
     )
     const isFormattingActivated = getIsFormattingActivated()
 
@@ -24,7 +24,7 @@ const registerCommand = () =>
         editorConfiguration.update(
           setting,
           !isFormattingActivated,
-          ConfigurationTarget.Global
+          ConfigurationTarget.Global,
         )
       }
     })

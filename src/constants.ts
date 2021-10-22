@@ -10,7 +10,7 @@ export type FormattingSettings =
 export const FORMATTING_SETTINGS: FormattingSettings[] = [
   'formatOnPaste',
   'formatOnSave',
-  'formatOnType'
+  'formatOnType',
 ]
 
 // This should be kept in sync with the default specified in the `package.json`

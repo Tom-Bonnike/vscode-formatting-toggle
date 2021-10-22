@@ -11,7 +11,7 @@ const createStatusBarItem = () => {
     StatusBarAlignment.Right,
     // We substract one so that it is always to the right of the Prettier status
     // bar item. If we didn’t do this, the position could switch randomly.
-    PRETTIER_STATUS_BAR_PRIORITY - 1
+    PRETTIER_STATUS_BAR_PRIORITY - 1,
   )
 
   statusBar.command = COMMAND_NAME
