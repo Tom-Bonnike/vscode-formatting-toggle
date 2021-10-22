@@ -1,7 +1,5 @@
 .vscode
 .gitignore
 .prettierignore
-tsconfig.json
 src
-**/*.map
-**/**/spec.js
+tsconfig.json

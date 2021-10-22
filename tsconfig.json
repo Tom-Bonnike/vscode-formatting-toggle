@@ -1,17 +1,22 @@
 {
   "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "out",
-    "target": "es6",
-    "module": "commonjs",
-    "moduleResolution": "node",
     "esModuleInterop": true,
-    "sourceMap": true,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": "./out",
+    "rootDir": "./src",
+    "sourceMap": false,
+    "target": "ES6",
+
     "strict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": true,
     "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
     "noStrictGenericChecks": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "exclude": [".vscode", "node_modules", "out", "src/__mocks__"]
+  "exclude": ["src/__mocks__", "src/**/spec.ts"]
 }
