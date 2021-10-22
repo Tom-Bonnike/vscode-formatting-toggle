@@ -1,6 +1,6 @@
 import { FormattingSettings } from '../../constants'
 import getConfiguration from '../getConfiguration'
-import getIsFormattingActivated, { FormattingConfiguration } from './'
+import getFormattingStatus, { FormattingConfiguration } from './'
 
 jest.mock('../getConfiguration')
 
@@ -27,7 +27,7 @@ const mockGetConfiguration = (configurationMock: ConfigurationMock) =>
     },
   )
 
-describe('The `getIsFormattingActivated` helper', () => {
+describe('The `getFormattingStatus` helper', () => {
   it('should return `true` if any of the formatting settings is enabled (without any custom `affects` configuration)', () => {
     const testCases: ConfigurationMock[] = [
       {
@@ -85,7 +85,7 @@ describe('The `getIsFormattingActivated` helper', () => {
       mockGetConfiguration(configurationMock)
 
       const expected = true
-      const actual = getIsFormattingActivated()
+      const actual = getFormattingStatus()
 
       expect(actual).toEqual(expected)
     })
@@ -157,7 +157,7 @@ describe('The `getIsFormattingActivated` helper', () => {
       mockGetConfiguration(configurationMock)
 
       const expected = true
-      const actual = getIsFormattingActivated()
+      const actual = getFormattingStatus()
 
       expect(actual).toEqual(expected)
     })
@@ -173,7 +173,7 @@ describe('The `getIsFormattingActivated` helper', () => {
     })
 
     const expected = false
-    const actual = getIsFormattingActivated()
+    const actual = getFormattingStatus()
 
     expect(actual).toEqual(expected)
   })
@@ -244,7 +244,7 @@ describe('The `getIsFormattingActivated` helper', () => {
       mockGetConfiguration(configurationMock)
 
       const expected = false
-      const actual = getIsFormattingActivated()
+      const actual = getFormattingStatus()
 
       expect(actual).toEqual(expected)
     })
