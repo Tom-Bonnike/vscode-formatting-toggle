@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "configurations": [
     {
-      "name": "Launch VSCode with the extension installed",
+      "name": "Launch VS Code with the extension installed",
       "type": "extensionHost",
       "request": "launch",
       "runtimeExecutable": "${execPath}",

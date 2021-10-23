@@ -28,7 +28,7 @@ All notable changes to the “Formatting Toggle” extension will be documented 
 
 ## [1.1.2]
 
-- Fix formatting settings not being toggled if they were all set to `false` when VSCode was first launched. `formatOnType` is now never toggled on if it wasn’t part of the user’s config beforehand.
+- Fix formatting settings not being toggled if they were all set to `false` when VS Code was first launched. `formatOnType` is now never toggled on if it wasn’t part of the user’s config beforehand.
 
 ## [1.1.1]
 
