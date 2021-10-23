@@ -2,6 +2,11 @@
 
 All notable changes to the “Formatting Toggle” extension will be documented in this file.
 
+## [3.0.0]
+
+- ⚠️ Breaking: the `formattingToggle.affects` option now expects a full path for formatting settings (i.e. `formatOnPaste` → `editor.formatOnPaste`).
+- The extension now supports toggling any boolean setting that lives at the root of the VSCode configuration via the `formattingToggle.affects` option.
+
 ## [2.0.0]
 
 - ⚠️ Breaking: remove `formattingToggle.activateFor` option.
