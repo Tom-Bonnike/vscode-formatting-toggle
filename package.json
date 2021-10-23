@@ -52,7 +52,7 @@
             "editor.formatOnSave",
             "editor.formatOnType"
           ],
-          "description": "The formatting settings the extension should toggle. Affects all formatting events (`editor.formatOnPaste`, `editor.formatOnSave`, `editor.formatOnType`) by default."
+          "description": "The formatting settings the extension should toggle. Affects all formatting events by default."
         }
       }
     }
