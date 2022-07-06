@@ -27,7 +27,7 @@ The extension should show up on the right side of the status bar. Simply click i
 
 By default, Formatting Toggle toggles all formatting settings: `editor.formatOnPaste`, `editor.formatOnSave` and `editor.formatOnType`. To toggle different settings, or to prevent a specific setting from being toggled, you can use the `formattingToggle.affects` setting in your editor settings (Code › Preferences › Settings).
 
-💡 Formatting Toggle was created with formatting settings in mind but allows you to toggle any boolean setting that lives at the root of the VSCode configuration.
+💡 Formatting Toggle was created with formatting settings in mind but allows you to toggle any boolean setting that lives at the root of the VSCode configuration. `editor.codeActionsOnSave` is currently the only deeply nested setting supported.
 
 ### Examples
 
@@ -47,6 +47,14 @@ By default, Formatting Toggle toggles all formatting settings: `editor.formatOnP
 {
   "editor.formatOnType": false,
   "formattingToggle.affects": ["editor.formatOnPaste", "editor.formatOnSave"]
+}
+```
+
+#### Allowing `editor.codeActionsOnSave` to be toggled:
+
+```json
+{
+  "formattingToggle.affects": ["editor.codeActionsOnSave.source.fixAll.eslint"]
 }
 ```
 
