@@ -10,3 +10,5 @@ export const DEFAULT_AFFECTS_CONFIGURATION = [
   'editor.formatOnSave',
   'editor.formatOnType',
 ]
+
+export const EDITOR_CODE_ACTIONS_ON_SAVE_PATH = 'editor.codeActionsOnSave'

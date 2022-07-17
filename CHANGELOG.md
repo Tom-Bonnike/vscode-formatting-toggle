@@ -2,6 +2,10 @@
 
 All notable changes to the “Formatting Toggle” extension will be documented in this file.
 
+## [3.1.0]
+
+- Add support for `editor.codeActionsOnSave` in `formattingToggle.affects`.
+
 ## [3.0.0]
 
 - ⚠️ Breaking: the `formattingToggle.affects` option now expects a full path for formatting settings (i.e. `formatOnPaste` → `editor.formatOnPaste`).
