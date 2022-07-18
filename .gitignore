@@ -3,5 +3,4 @@ node_modules/
 out/
 
 # Editor files
-.vscode
 *.code-workspace
