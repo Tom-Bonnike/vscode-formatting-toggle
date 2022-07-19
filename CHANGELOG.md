@@ -2,6 +2,10 @@
 
 All notable changes to the “Formatting Toggle” extension will be documented in this file.
 
+## [3.1.1]
+
+- Fix multiple `editor.codeActionsOnSave` settings not getting toggled correctly.
+
 ## [3.1.0]
 
 - Add support for `editor.codeActionsOnSave` in `formattingToggle.affects`.
