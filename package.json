@@ -44,6 +44,15 @@
       "type": "object",
       "title": "Formatting Toggle’s configuration",
       "properties": {
+        "formattingToggle.statusBarLabel": {
+          "type": "object",
+          "scope": "window",
+          "default": {
+            "formattingEnabled": "Formatting: $(check)",
+            "formattingDisabled": "Formatting: $(x)"
+          },
+          "description": "The Status Bar text and icons displayed when formatting is enabled or disabled."
+        },
         "formattingToggle.affects": {
           "scope": "resource",
           "type": "array",

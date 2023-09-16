@@ -29,6 +29,10 @@ By default, Formatting Toggle toggles all formatting settings: `editor.formatOnP
 
 💡 Formatting Toggle was created with formatting settings in mind but allows you to toggle any boolean setting that lives at the root of the VSCode configuration. `editor.codeActionsOnSave` is currently the only deeply nested setting supported.
 
+The Status Bar label can be customized via `formattingToggle.statusBarLabel`, which is also in your editor settings (Code › Preferences › Settings).
+
+Values for `enabled` and `disabled` are distinct, and can include different codicons for each state. See [Product Icon Reference](https://code.visualstudio.com/api/references/icons-in-labels#icon-listing) for more options.
+
 ### Examples
 
 #### Keeping `editor.formatOnPaste` and `editor.formatOnType` enabled at all times:
@@ -67,5 +71,16 @@ By default, Formatting Toggle toggles all formatting settings: `editor.formatOnP
     "editor.formatOnSave",
     "editor.formatOnType"
   ]
+}
+```
+
+#### Customizing the Status Bar label:
+
+```json
+{
+  "formattingToggle.statusBarLabel": {
+    "formattingEnabled": "On $(heart-filled)",
+    "formattingDisabled": "Off $(heart)"
+  },
 }
 ```
