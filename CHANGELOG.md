@@ -2,6 +2,10 @@
 
 All notable changes to the “Formatting Toggle” extension will be documented in this file.
 
+## [3.2.0]
+
+- Add `formattingToggle.statusBarText` setting so the status bar text can be configured.
+
 ## [3.1.1]
 
 - Fix multiple `editor.codeActionsOnSave` settings not getting toggled correctly.

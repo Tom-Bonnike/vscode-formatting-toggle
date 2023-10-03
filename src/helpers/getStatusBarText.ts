@@ -1,6 +1,6 @@
 import { workspace } from 'vscode'
-import { DEFAULT_STATUS_BAR_TEXT_CONFIGURATION } from '../../constants'
-import getFormattingStatus from '../getFormattingStatus'
+import { DEFAULT_STATUS_BAR_TEXT_CONFIGURATION } from '../constants'
+import getFormattingStatus from './getFormattingStatus'
 
 export const getStatusBarText = () => {
   const isFormattingActivated = getFormattingStatus()
