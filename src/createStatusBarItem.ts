@@ -1,4 +1,4 @@
-import { window, StatusBarAlignment } from 'vscode'
+import { window, StatusBarAlignment, StatusBarItem } from 'vscode'
 import { COMMAND_NAME } from './constants'
 import getStatusBarText from './helpers/getStatusBarText'
 
@@ -6,8 +6,8 @@ import getStatusBarText from './helpers/getStatusBarText'
 const PRETTIER_STATUS_BAR_PRIORITY = -1
 const TOOLTIP_TEXT = 'Enable/Disable formatting'
 
-const createStatusBarItem = () => {
-  const statusBarItem = window.createStatusBarItem(
+const createStatusBarItem = (): StatusBarItem => {
+  const statusBarItem: StatusBarItem = window.createStatusBarItem(
     StatusBarAlignment.Right,
     // We substract one so that it is always to the right of the Prettier status
     // bar item. If we didn’t do this, the position could switch randomly.
