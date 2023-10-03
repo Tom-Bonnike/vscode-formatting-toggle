@@ -1,11 +1,11 @@
 <a href="https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle#overview">
-  <img src="https://vsmarketplacebadges.dev/version/tombonnike.vscode-status-bar-format-toggle.svg" />
-  <img src="https://vsmarketplacebadges.dev/downloads-short/tombonnike.vscode-status-bar-format-toggle.svg" />
-  <img src="https://vsmarketplacebadges.dev/installs-short/tombonnike.vscode-status-bar-format-toggle.svg" />
+  <img src="https://img.shields.io/visual-studio-marketplace/v/tombonnike.vscode-status-bar-format-toggle" />
+  <img src="https://img.shields.io/visual-studio-marketplace/d/tombonnike.vscode-status-bar-format-toggle" />
+  <img src="https://img.shields.io/visual-studio-marketplace/i/tombonnike.vscode-status-bar-format-toggle" />
 </a>
 
 <a href="https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle#review-details">
-  <img src="https://vsmarketplacebadges.dev/rating-star/tombonnike.vscode-status-bar-format-toggle.svg" />
+  <img src="https://img.shields.io/visual-studio-marketplace/stars/tombonnike.vscode-status-bar-format-toggle" />
 </a>
 
 
