@@ -11,4 +11,11 @@ export const DEFAULT_AFFECTS_CONFIGURATION = [
   'editor.formatOnType',
 ]
 
+// This should be kept in sync with the default specified in the `package.json`
+// file: `contributes.configuration.properties.formattingToggle.statusBarText.default`.
+export const DEFAULT_STATUS_BAR_TEXT_CONFIGURATION = {
+  formattingEnabled: 'Formatting: $(check)',
+  formattingDisabled: 'Formatting: $(x)'
+}
+
 export const EDITOR_CODE_ACTIONS_ON_SAVE_PATH = 'editor.codeActionsOnSave'

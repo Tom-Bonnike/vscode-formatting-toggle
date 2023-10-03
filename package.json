@@ -16,7 +16,7 @@
   },
   "homepage": "https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle",
   "engines": {
-    "vscode": "^1.38.0"
+    "vscode": "^1.82.0"
   },
   "keywords": [
     "disable",
@@ -44,14 +44,14 @@
       "type": "object",
       "title": "Formatting Toggle’s configuration",
       "properties": {
-        "formattingToggle.statusBarLabel": {
+        "formattingToggle.statusBarText": {
           "type": "object",
-          "scope": "window",
+          "scope": "resource",
           "default": {
             "formattingEnabled": "Formatting: $(check)",
             "formattingDisabled": "Formatting: $(x)"
           },
-          "description": "The Status Bar text and icons displayed when formatting is enabled or disabled."
+          "description": "The status bar text displayed when the formatting is enabled or disabled. It can include VS Code codicons."
         },
         "formattingToggle.affects": {
           "scope": "resource",
@@ -66,33 +66,13 @@
       }
     }
   },
-  "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "transform": {
-      "^.+\\.ts$": "ts-jest"
-    },
-    "modulePathIgnorePatterns": [
-      "out"
-    ],
-    "moduleNameMapper": {
-      "vscode": "<rootDir>/src/__mocks__/vscode.ts"
-    },
-    "testRegex": "spec.ts"
-  },
   "scripts": {
     "start": "tsc -watch -p ./",
-    "test": "jest --verbose",
     "vscode:prepublish": "tsc -p ./"
   },
   "devDependencies": {
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.45",
-    "@types/vscode": "^1.38.0",
-    "jest": "^27.5.1",
-    "ts-jest": "^27.1.5",
-    "typescript": "^4.7.4"
+    "@types/node": "^20.8.2",
+    "@types/vscode": "^1.82.0",
+    "typescript": "^5.2.2"
   }
 }

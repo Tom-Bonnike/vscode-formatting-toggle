@@ -29,9 +29,7 @@ By default, Formatting Toggle toggles all formatting settings: `editor.formatOnP
 
 💡 Formatting Toggle was created with formatting settings in mind but allows you to toggle any boolean setting that lives at the root of the VSCode configuration. `editor.codeActionsOnSave` is currently the only deeply nested setting supported.
 
-The Status Bar label can be customized via `formattingToggle.statusBarLabel`, which is also in your editor settings (Code › Preferences › Settings).
-
-Values for `enabled` and `disabled` are distinct, and can include different codicons for each state. See [Product Icon Reference](https://code.visualstudio.com/api/references/icons-in-labels#icon-listing) for more options.
+The status bar text can also be customized via the `formattingToggle.statusBarText` setting. Values for `formattingEnabled` and `formattingDisabled` are distinct, and can include different codicons for each state. See [Product Icon Reference](https://code.visualstudio.com/api/references/icons-in-labels#icon-listing) for all options.
 
 ### Examples
 
@@ -74,11 +72,11 @@ Values for `enabled` and `disabled` are distinct, and can include different codi
 }
 ```
 
-#### Customizing the Status Bar label:
+#### Customizing the status bar text:
 
 ```json
 {
-  "formattingToggle.statusBarLabel": {
+  "formattingToggle.statusBarText": {
     "formattingEnabled": "On $(heart-filled)",
     "formattingDisabled": "Off $(heart)"
   },
